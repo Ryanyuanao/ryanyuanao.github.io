@@ -2,131 +2,17 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
-		<title>图灵机器人</title>
-		<style type="text/css">
-			h1 {
-				margin: 50px 50px 50px 100px;
-			}
-			
-			h3 {
-				margin: 0 50px 0 100px;
-				color: red;
-			}
-			
-			.content {
-				width: 500px;
-				height: 100px;
-				border: 5px dotted red;
-				margin: 0 50px 0 100px;
-			}
-			
-			.hr {
-				width: 600px;
-				border-top: 5px dotted red;
-				margin: 20px 50px 0 100px;
-			}
-			.blue{
-				color: cornflowerblue;
-			}
-			.green{
-				color: darkseagreen;
-			}
-			.red{
-				color: red;
-			}
-			.main{
-				width: 100%;
-				padding-left: 100px;
-			}
-			.border{
-				border-bottom: 5px dotted red;
-			}
-			a{
-				text-decoration: none;
-			}
-		</style>
-	</head>
-
-	<body>
-		<h1>图灵机器人</h1>
-		<h3>请在下面对话框中输入你要和机器人对话的内容</h3>
-		<textarea class="content" contenteditable="true">
-			
-		</textarea>
-		<div class="hr"></div>
-		<div class="main"></div>
-
 		<script type="text/javascript">
-			var textarea = document.querySelector('textarea')
-			var main = document.querySelector('.main')
-			var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function() {
-				var str ='';
-				if(xhr.readyState == 4) {
-					// 如果接收数据完成，则得到响应数据，如果响应数据的格式是json，那么就转换为js对象
-					var data = JSON.parse(xhr.responseText);
-					// 转换为js对象后，对数据进行处理,比如页面渲染等
-					// alert(data.message);
-					console.log(data);
-					
-					if(data.code == 100000){
-						str=`
-						    <div class="border">
-						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
-						    <p class="blue">回答:<span class="red">${data.text}</span></p>
-						    </div>
-						`
-						console.log(str)
-						main.innerHTML += str;
-					}
-					if(data.code == 200000){
-						str=`
-						   <div class="border">
-						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
-						    <p class="blue">回答:<span class="red">${data.text}</span><a href=${data.url}>点击这里</a></p>
-						   
-						    </div>
-						`
-						main.innerHTML += str;
-					}
-					if(data.code == 302000){
-						str=`
-						   <div class="border">
-						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
-						    <p class="blue">回答:<span class="red">${data.text}</span><a href=${data.url}>点击这里</a></p>
-						   
-						    </div>
-						`
-						main.innerHTML += str;
-					}
-					if(data.code == 308000){
-						str=`
-						   <div class="border">
-						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
-						    <p class="blue">回答:<span class="red">${data.text}</span><a href=${data.url}>点击这里</a></p>
-						   
-						    </div>
-						`
-						main.innerHTML += str;
-						textarea.value = '';
-					}
-					
-				}
-				
-			}
-
-
-			window.onkeyup = function(e){
-				if(e.keyCode ==13){
-					xhr.open('get',`http://www.tuling123.com/openapi/api?key=ed756d6fd52846928ff4badb62c996d9&info=${textarea.value}`,true)
-					xhr.send();
-				}
-			}
-			
-			
-		</script>
-
-	</body>
-
-</html>
+	     (function (w, d, s, i, v, j, b) {
+		w[i] = w[i] || function () {
+			(w[i].v = w[i].v || []).push(arguments)
+		};
+		j = d.createElement(s),
+			b = d.getElementsByTagName(s)[0];
+		j.async = true;
+		j.charset = "UTF-8";
+		j.src = "https://www.v5kf.com/169249/295210301f649/v5kf.js";
+		b.parentNode.insertBefore(j, b);
+	    })(window, document, "script", "V5CHAT");
+        </script>		
+	</head>
