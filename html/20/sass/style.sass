@@ -1,0 +1,43 @@
+@import "compass/css3"
+
+$n: 25
+$s: 15em
+*,
+*:before,
+*:after
+  margin: 0
+  padding: 0
+  +box-sizing(border-box)
+*:before,
+*:after
+  content: ''
+html,
+body
+  height: 100%
+body
+  position: relative
+  background: #272727
+  overflow: hidden
+.container,
+.container *
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  margin: auto
+  +transform-style(preserve-3d)
+.container
+  animation: spin 10s linear infinite
+.thing
+  width: $s
+  height: $s
+  +border-radius(50%)
+  @for $i from 0 to $n
+    $c: hsl($i * 360 / $n, 100%, 65%)
+    &:nth-child(#{$i + 1})
+      +box-shadow(inset 10px 0 0 1px rgba($c, 1))
+      +transform(rotateZ($i * 360deg / $n)translateY($s / 3))
++keyframes(spin)
+  100%
+    +transform(rotateZ(360deg))
