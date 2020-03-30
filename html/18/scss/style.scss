@@ -1,0 +1,170 @@
+@import "compass/css3";
+
+$color-folder: #fab62f;
+
+// Inverts a location so that top gets bottom and left gets right etc.
+@function invert-location($location) {
+  @if $location == left {
+    @return right;  
+  }
+  @elseif $location == right {
+    @return left;  
+  }
+  @elseif $location == top {
+    @return bottom;  
+  }
+  @elseif $location == bottom {
+    @return top;  
+  }
+}
+
+// Gets the start position left on horizontal and top on vertical
+@function position-start($location) {
+  @if $location == top or $location == bottom {
+    @return left;
+  }
+  @else {
+    @return top;
+  }
+}
+
+// Gets the end position right on horizontal and bottom on vertical
+@function position-end($location) {
+  @if $location == top or $location == bottom {
+    @return right;
+  }
+  @else {
+    @return bottom;
+  }
+}
+
+// Decides if size needs to be height or width based on horizontal or vertical 
+@function size-property($location) {
+  @if $location == top or $location == bottom {
+    @return width;
+  }
+  @else {
+    @return height;
+  }
+}
+
+/* 
+   Generates the negative triangle as part of a offset with :before and :after
+
+   $location: Where you want the negative triangle [top, right, bottom, left]
+
+   $position: In percentage where the negative triangle should be placed. With 50% the cut out triangle is in the center.
+
+   $size: How much will the surface be extruded in order to cut out the triangle. Can be any valid size (px, em, rem, % etc.)
+
+   $color: The color of the extruded part where the triangle gets cut out
+*/
+@mixin negative-css-triangle($location: top, $position: 50%, $size: 30px, $color: black) {
+  &:before, &:after {
+    box-sizing: border-box;
+    content: "";
+    display: block;
+    position: absolute;
+    #{$location}: -$size * 2;
+    border: $size solid transparent;
+  }
+  
+  &:before {
+    #{position-start($location)}: 0;
+    #{size-property($location)}: $position;
+    border-#{position-start($location)}: none;   
+    border-#{invert-location($location)}-color: $color;
+  }
+      
+  &:after {
+    #{position-end($location)}: 0;
+    #{size-property($location)}: 100% - $position;
+    border-#{position-end($location)}: none;
+    border-#{invert-location($location)}-color: $color;
+  }  
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: shade($color-folder, 60%);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+        
+  > .folder {
+    width: 220px;
+    height: 180px;
+    left: calc(50% - 110px);
+    top: calc(70% - 90px);
+    position: absolute;
+    
+    > .cover {
+      cursor: pointer;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $color-folder; 
+      
+      @include border-radius(0 0 10px 10px);
+      @include box-shadow(5px 5px rgba(0, 0, 0, 0.2));
+      
+      @include negative-css-triangle(top, 50%, 50px, $color-folder);
+      
+      > .title {
+        position: absolute;
+        padding: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        font-size: 2.5em;
+        color: rgba(0, 0, 0, 0.1);
+        @include user-select(none);
+        
+        @include transform(rotate(20deg));
+      }
+    }
+    
+    > .paper {
+      opacity: 1;
+      position: absolute;
+      overflow: hidden;
+      width: 200px;
+      height: 200px;      
+      top: calc(50% - 150px);
+      left: calc(50% - 100px);
+      
+      transition: top 0.5s, opacity 0.4s;
+      
+      font-family: Verdana, Tahoma, sans-serif;
+      font-size: 0.1em;
+      padding: 1em;
+      color: shade($color-folder, 60%);
+      background-color: tint($color-folder, 60%);
+      
+      @include box-shadow(10px 10px rgba(0, 0, 0, 0.2));
+      @include border-radius(5px);
+    }
+    
+    &:hover {
+      > .paper {
+        top: calc(50% - 200px);
+      }
+    }
+    
+    &.opened {
+      > .paper {
+        top: calc(-500px);
+        opacity: 0;
+      }
+    }
+  }
+  
+}
