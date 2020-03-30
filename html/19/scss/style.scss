@@ -1,0 +1,145 @@
+@import "compass/css3";
+
+html, body {
+  height: 100%;
+  @include radial-gradient(circle at 50% -100%, white 10%, #665949, #362c22);
+}
+
+.safari {
+  @include position(absolute, 50% 0 0 50%);
+  @include box-sizing(border-box);
+  @include size(216px);
+  @include transform(translate(-50%, -50%));
+  @include linear-gradient(#d7e1eb, #bbc3ce);
+  border: 1px solid rgba(#211811, .4);
+  border-radius: 32px;
+  box-shadow: inset -1px 1px 0 1px rgba(white, .4), inset -1px 0 0 rgba(#30A9EB, .4), 0 15px 45px rgba(black, .4);
+}
+
+.compass {
+  @include position(absolute, 35px 0 0 35px);
+  @include box-sizing(border-box);
+  @include size(146px);
+  @include transform(translate3d(0, 0, 1));
+  @include linear-gradient(45deg, #30A9EB, #2ea9ed);
+  border-radius: 73px;
+  box-shadow: inset 0 1px 1px 1px #082A77;
+  
+  &::before {
+    content: '\20';
+    @include position(absolute, -2px 0 0 -2px);
+    @include box-sizing(border-box);
+    @include size(150px);
+    @include linear-gradient(45deg, #fff, rgba(black, .25));
+    border-radius: 74px;
+    z-index: -1;
+  }
+  
+  &::after {
+    content: '\20';
+    @include position(absolute, 8px 0 0 8px);
+    @include box-sizing(border-box);
+    @include size(130px);
+    @include radial-gradient(#33b4ee 50%, #29a5ef);
+    border-radius: 65px;
+    box-shadow: inset 0 4px 4px #0f42ab, 0 1px 1px rgba(#40c5f2, .9);
+  }
+}
+
+.needle {
+  @include position(absolute, 73px 0 0 73px);
+  @include transform(rotate(45deg));
+  z-index: 20;
+  
+  &::before {
+    content: '\20';
+    @include position(absolute, 0px 0 0 -6px);
+    @include size(0px);
+    border-style: solid;
+    border-width: 70px 6px 0 6px;
+    border-color: white transparent transparent transparent;
+    box-shadow: 12px 4px 10px rgba(#082A77, .2);
+    @include transform-origin(top center);
+    @include animation(turn 2s 1s $ease-in-back infinite alternate);
+  }
+  &::after {
+    content: '\20';
+    @include position(absolute, -70px 0 0 -6px);
+    @include size(0px);
+    border-style: solid;
+    border-width: 0 6px 70px 6px;
+    border-color: transparent transparent #f03a39 transparent;
+    box-shadow: 12px 4px 10px rgba(#082A77, .2);
+    @include transform-origin(bottom center);
+    @include animation(turn 2s 1s $ease-in-back infinite alternate);
+  }
+}
+
+.screw {
+  @include position(absolute, -13px 0 0 -13px);
+  @include box-sizing(border-box);
+  @include size(26px);
+  background: #ebe7e8;
+  border-radius: 13px;
+  box-shadow: inset -1px 1px 1px white, inset 1px -1px 1px rgba(black, .25), -2px 2px 6px rgba(black, .25), 15px 5px 10px rgba(#082A77, .25);
+  @include transform(translate3d(0, 0, 2));
+  z-index: 30;
+}
+
+.dial {
+  content: '\20';
+  @include position(absolute, 50px 0 0 50px);
+  @include box-sizing(border-box);
+  @include size(46px);
+  @include linear-gradient(45deg, #29a5ef, #36c0ef);
+  border-radius: 23px;
+  box-shadow: inset 2px -2px 10px rgba(#0f42ab, .25), inset -1px 1px 10px rgba(white, .1);
+  z-index: 10;
+}
+
+.clock {
+  @include position(absolute, -36px 0 0 22px);
+  @include size(2px 118px);
+  
+  &::before, &::after {
+    content: '\20';
+    display: block;
+    @include size(2px 12px);
+    background: white;
+    box-shadow: 0 0 2px 1px rgba(#082A77, .25);
+  }
+  
+  &::after {
+    margin-top: 94px;
+  }
+}
+
+.clock-half {
+  @include position(absolute, 0px 0 0 0px);
+  @include transform(rotate(15deg));
+  &::before, &::after {
+    content: '\20';
+    display: block;
+    @include size(1px 6px);
+    background: white;
+    box-shadow: 0 0 2px 1px rgba(#082A77, .25);
+  }
+  &::after {
+    margin-top: 106px;
+  }
+}
+
+.clock-1-7 { @include transform(rotate(30deg)); }
+.clock-2-8 { @include transform(rotate(60deg)); }
+.clock-3-9 { @include transform(rotate(90deg)); }
+.clock-4-10 { @include transform(rotate(120deg)); }
+.clock-5-11 { @include transform(rotate(150deg)); }
+
+@include keyframes(turn) {
+  0% {
+    @include transform(rotate(0deg)); 
+  }
+  100% {
+    @include transform(rotate(-90deg));  
+  }
+}
