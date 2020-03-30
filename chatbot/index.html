@@ -1,221 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>PC机器人聊天界面</title>
-<style>
-.box{
-	width: 100%;
-	height: 500px;
-	position:absolute;
-	top:0;
-}
-#content{
-	width: 98%;
-	height: 500px;
-	margin-right:1%;
-	margin-left:1%;
-}
-form{
-	width: 100%;
-	height:60px;
-	line-height:40px;
-	border-top:1px solid #ccc; 
-	position:absolute;
-	bottom:0;
-	left:0;
-}
-#content form img{
-	border:1px solid #ccc;
-	border-radius:7px;
-	padding:2px; 
-	cursor:pointer;
-	margin:5px 0 0 5px;
-	float:left;
-	width:40px;
-	height:40px;
-}
-#content form input[type='text']{
-	width:80%;
-	height:40px;
-	line-height:27px;
-	border-radius:7px; 
-	border:1px solid #ccc;
-	float:left;
-	margin-left:5px; 
-	margin-top:5px; 
-	outline:none;
-	padding:0 5px; 
-}
-#content form input[type='button']{
-	width:12%;
-	height: 40px;
-	border-radius:5px; 
-	background:#fff;
-	border:none;
-	margin-left:1%; 
-	cursor:pointer;
-	font-size:27px;
-	margin-top:5px;
-}
+<html>
 
-.info_box{
-	width: 100%;
-	height:440px;
-	overflow-y:auto;
-}
-.info_box::-webkit-scrollbar {display:none}
-.info_box div{
-	margin:0 0 5px;
-	position:relative;
-}
-.info_box .info_r{
-	
-}
-.info_box .info_l{
-
-}
-.info_box .info_l img{
-	position:absolute;
-	left:0;
-	top:0;
-}
-.info_box .info_r img{
-	position:absolute;
-	right:0;
-	top:0;
-}
-.info_box .info_l span{margin-left: 60px;margin-top:16px;}
-.info_box .info_r span{margin-left:28%;margin-top:16px;}
-
-
-.info_box span{
-	width: 66%;
-	height: auto;
-	font-size:14px;
-	background:#ddd;
-	border-radius: 10px;
-	padding:8px;  
-	color:#333;
-	display: block;
-	position:relative;
-	top:0;
-}
-
-
-.info_box .info_l img{
-	float:left;
-	width:50px;
-    height:50px;
-}
-
-
-
-.info_r img{
-	float:right;
-	width:50px;
-    height:50px;
-}
-
-
-
-</style>
-</head>
-<body>
-<div class="box">
-	<div id="content">
-		<div class="info_box">
-		
-			 <div class="info_r">
-					<img src="img/2.jpg" class='pic_r'>
-					<span class='infor'>Python是一种跨平台的计算机程序设计语言。是一种面向对象的动态类型语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。</span>
-				</div> 	
-			 <div class="info_l">
-				<img src="img/1.jpg" class='pic_l'>
-				<span class='infoo'>在您开始之前，在你的计算机将需要Python，但您可能不需要下载它。首先检查(在命令行窗口输入python)有没有安装Python!如果你看到了一个Python解释器的响应，那么就能在它的显示窗口中得到一个版本号。通常较新的版本都可以做到Python的向前兼容。</span>
-			</div>	 
+	<head>
+		<meta charset="UTF-8">
+		<title>图灵机器人</title>
+		<style type="text/css">
+			h1 {
+				margin: 50px 50px 50px 100px;
+			}
 			
-		</div>
-		<form action="">
-			<img src="img/1.jpg" id='pic'>
-			<input type="text" placeholder='尽情畅聊吧' id='inp'>
-			<input type="button" value='发送' id='send'>
-		</form>
-	</div>
-</div>
+			h3 {
+				margin: 0 50px 0 100px;
+				color: red;
+			}
+			
+			.content {
+				width: 500px;
+				height: 100px;
+				border: 5px dotted red;
+				margin: 0 50px 0 100px;
+			}
+			
+			.hr {
+				width: 600px;
+				border-top: 5px dotted red;
+				margin: 20px 50px 0 100px;
+			}
+			.blue{
+				color: cornflowerblue;
+			}
+			.green{
+				color: darkseagreen;
+			}
+			.red{
+				color: red;
+			}
+			.main{
+				width: 100%;
+				padding-left: 100px;
+			}
+			.border{
+				border-bottom: 5px dotted red;
+			}
+			a{
+				text-decoration: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>图灵机器人</h1>
+		<h3>请在下面对话框中输入你要和机器人对话的内容</h3>
+		<textarea class="content" contenteditable="true">
+			
+		</textarea>
+		<div class="hr"></div>
+		<div class="main"></div>
+
+		<script type="text/javascript">
+			var textarea = document.querySelector('textarea')
+			var main = document.querySelector('.main')
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				var str ='';
+				if(xhr.readyState == 4) {
+					// 如果接收数据完成，则得到响应数据，如果响应数据的格式是json，那么就转换为js对象
+					var data = JSON.parse(xhr.responseText);
+					// 转换为js对象后，对数据进行处理,比如页面渲染等
+					// alert(data.message);
+					console.log(data);
+					
+					if(data.code == 100000){
+						str=`
+						    <div class="border">
+						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
+						    <p class="blue">回答:<span class="red">${data.text}</span></p>
+						    </div>
+						`
+						console.log(str)
+						main.innerHTML += str;
+					}
+					if(data.code == 200000){
+						str=`
+						   <div class="border">
+						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
+						    <p class="blue">回答:<span class="red">${data.text}</span><a href=${data.url}>点击这里</a></p>
+						   
+						    </div>
+						`
+						main.innerHTML += str;
+					}
+					if(data.code == 302000){
+						str=`
+						   <div class="border">
+						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
+						    <p class="blue">回答:<span class="red">${data.text}</span><a href=${data.url}>点击这里</a></p>
+						   
+						    </div>
+						`
+						main.innerHTML += str;
+					}
+					if(data.code == 308000){
+						str=`
+						   <div class="border">
+						    <p class="blue">提问:<span class="green">${textarea.value}</span></p>
+						    <p class="blue">回答:<span class="red">${data.text}</span><a href=${data.url}>点击这里</a></p>
+						   
+						    </div>
+						`
+						main.innerHTML += str;
+						textarea.value = '';
+					}
+					
+				}
+				
+			}
 
 
-<script>
-var send =document.getElementById('send');
-var pic =document.getElementById('pic');
-var txt =document.getElementById('inp');
-var info_box = document.getElementsByClassName('info_box')[0];
+			window.onkeyup = function(e){
+				if(e.keyCode ==13){
+					xhr.open('get',`http://www.tuling123.com/openapi/api?key=ed756d6fd52846928ff4badb62c996d9&info=${textarea.value}`,true)
+					xhr.send();
+				}
+			}
+			
+			
+		</script>
 
-var onoff=true;
-pic.onclick=function(){
-	if(onoff){
-		pic.src='img/2.jpg';
-		onoff=false;
-	}
-	else{
-		pic.src='img/1.jpg';
-		onoff=true;
-	}
-};
+	</body>
 
-send.onclick=function(){
-	if(txt.value===''){
-		alert('请输入内容');
-	}
-	
-	else{
-	    
-		var nDiv = document.createElement('div');
-		var spans = document.createElement('span');
-		var imgs = document.createElement('img');
-		var sTxt = document.createTextNode(txt.value);
-		var info_box = document.getElementsByClassName('info_box')[0];
-		spans.appendChild(sTxt);
-		nDiv.appendChild(spans);
-		nDiv.appendChild(imgs);
-		// nDiv.style.display='block';
-		info_box.insertBefore(nDiv,info_box.lastChild);
-		spans.className='infor';
-	    nDiv.className='info_r';
-	    imgs.src='img/2.jpg';
-		
-		var nDiv = document.createElement('div');
-		var spans = document.createElement('span');
-		var imgs = document.createElement('img');
-		var sTxt = document.createTextNode("你说啥？");
-		var info_box = document.getElementsByClassName('info_box')[0];
-		spans.appendChild(sTxt);
-		nDiv.appendChild(spans);
-		nDiv.appendChild(imgs);
-		// nDiv.style.display='block';
-		info_box.insertBefore(nDiv,info_box.lastChild);
-	    spans.className='infol';
-			nDiv.className='info_l';
-			imgs.src='img/1.jpg';
-/*
-		if(onoff==true){
-			spans.className='infor';
-			nDiv.className='info_r';
-			imgs.src='img/2.png';
-		}
-		if(onoff==false){
-			spans.className='infol';
-			nDiv.className='info_l';
-			imgs.src='img/1.png';
-		}
-*/
-	}
-	txt.value='';
-}
-
-
-</script>
-	
-</body>
 </html>
