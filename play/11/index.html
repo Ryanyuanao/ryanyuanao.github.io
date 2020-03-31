@@ -1,0 +1,656 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery掷骰子小游戏 - 源码之家</title>
+
+<style>
+	*{margin: 0;padding: 0;}
+	body{
+		user-select: none;
+	}
+	.map{
+		position: absolute;
+		left:0%;
+		top:0%;
+		width:100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: repeat(10,1fr);
+		grid-template-rows: repeat(5,1fr);
+		grid-gap:3px;
+	}
+	.box{
+		position: relative;
+		height: 100%;
+		width: 100%;
+		color:#fff;
+		background: #454545;
+		text-align: center;
+		border-radius: 13px;
+	}
+	.box h1{
+		position: absolute;
+		top:50%;
+		left:50%;
+		font-size: 3em;
+		transform: translate(-50%,-50%);
+		font-weight: 400;
+
+	}
+	.character img{
+		position: relative;
+		margin-top:10%;
+		width:80px;
+		z-index: 1;
+	}
+	.control{
+		width:200px;
+		height:200px;
+		border-radius: 50%;
+		box-shadow: 4px 4px 4px #999 inset, -4px -4px 4px #999 inset, 4px -4px 4px #999 inset, -4px 4px 4px #999 inset,4px 4px 4px #666,-4px 4px 4px #666,4px -4px 4px #666,-4px -4px 4px #666;
+		background: #fff;
+		position: absolute;
+		top:50%;
+		right: 25%;
+		transform: translateY(-50%);
+
+	}
+	#c1 h1{
+		background: #454545;
+	}
+	#c2 h1{
+		background: #E53A40;
+	}
+	.control h1{
+		color: #fff;
+		padding: 8px;
+		position: absolute;
+		top:calc(-2em - 13px);
+		left:50%;
+		transform: translateX(-50%);
+		border-radius: 13px;
+	}
+	.dice1, .dice2{
+		width: 100px;
+		height: 100px;
+		background-image: url(img/1.jpg);
+		cursor: pointer;
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+	}
+	.box img{
+		width:80%;
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+	}
+	button{
+		height: 40px;
+		position: absolute;
+		bottom: -60px;
+		left:50%;
+		transform: translateX(-50%);
+	}
+	h1.small{
+		font-size: 1.5em;
+	}
+	@keyframes bigger{
+		0%{
+			width:80%;
+		}
+		100%{
+			width:100%;
+		}
+	}
+	@keyframes smaller{
+		0%{
+			width:80%;
+		}
+		100%{
+			width:60%;
+		}
+	}
+</style>
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="character">
+	<img id ="player1" src="img/batman.png" alt="">
+	<img id ="player2" src="img/superman.png" alt="">
+</div>
+
+<div class="map">
+	<div id="b1" class="box"><h1>1</h1></div>
+	<div id="b2" class="box"><h1>2</h1></div>
+	<div id="b3" class="box"><h1>3</h1></div>
+	<div id="b4" class="box"><h1 class="small">前<br>进<br>4<br>格</h1></div>
+	<div id="b5" class="box"><h1>5</h1></div>
+	<div id="b6" class="box"><h1>6</h1></div>
+	<div id="b7" class="box"><h1 class="small">再<br>掷<br>一<br>次</h1></div>
+	<div id="b8" class="box"><h1>8</h1></div>
+	<div id="b9" class="box"><h1>9</h1></div>
+	<div id="b10"class="box"><h1 class="small">前<br>进<br>6<br>格</h1></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div id="b11" class="box"><h1>11</h1></div>
+	<div id="b25" class="box"><h1>25</h1></div>
+	<div id="b26" class="box"><h1 class="small">前<br>进<br>1<br>格</h1></div>
+	<div id="b27" class="box"><h1>27</h1></div>
+	<div id="b28" class="box"><h1 class="small">后<br>退<br>10<br>格</h1></div>
+	<div id="b29" class="box"><h1 class="small">终点</h1></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div id="b12" class="box"><h1 class="small">后<br>退<br>3<br>格</h1></div>
+	<div id="b24" class="box"><h1>24</h1></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div class="hi"></div>
+	<div id="b13" class="box"><h1>13</h1></div>
+	<div id="b23" class="box"><h1>23</h1></div>
+	<div id="b22" class="box"><h1>22</h1></div>
+	<div id="b21" class="box"><h1 class="small">后<br>退<br>5<br>格</h1></div>
+	<div id="b20" class="box"><h1>20</h1></div>
+	<div id="b19" class="box"><h1>19</h1></div>
+	<div id="b18" class="box"><h1>18</h1></div>
+	<div id="b17" class="box"><h1 class="small">回<br>到<br>起<br>点</h1></div>
+	<div id="b16" class="box"><h1>16</h1></div>
+	<div id="b15" class="box"><h1>15</h1></div>
+	<div id="b14" class="box"><h1>14</h1></div>
+</div>
+<div id="c1" class="control">
+	<h1>Player1</h1>
+	<button class="btn1">改变速度</button>
+	<div class="dice1"></div>
+</div>
+<div id="c2" class="control">
+	<h1>Player2</h1>
+	<button class="btn1">改变速度</button>
+	<div class="dice2"></div>
+</div>
+<script>
+	var i = 0;
+	var j = 0;
+	var dice1 = $(".dice1");
+	var dice2 = $(".dice2");
+	var c1 = $("#c1");
+	var c2 = $("#c2");
+	var p1 = document.querySelector("#player1");
+	var p2 = document.querySelector("#player2");
+	var end = document.querySelector("#b29");
+	var b4 = $("#b4");
+	var b10 = $("#b10");
+	var b12 = $("#b12");
+	var b17 = $("#b17");
+	var b21 = $("#b21");
+	var b26 = $("#b26");
+	var b28 = $("#b28");
+	var speed = 700;
+	$(function(){
+		var x = Math.ceil(Math.random()*2);
+		$("#c"+x+"").css("visibility","hidden");
+	})
+	$(".btn1").click(function(){
+		if(speed == 280){
+			speed = 700;
+		}
+		else{
+			speed = 280;
+		}
+	})
+	function bruce(){
+		setTimeout(function(){	
+			if(i == j){
+				alert("Tell me, do you bleed?");
+				j = 1;
+				$("#b"+j+"").append(p2);
+			}
+		},300);
+	}
+	function clark(){
+		setTimeout(function(){
+			if(i == j){
+				alert("You can't win, Bruce.");
+				i = 1;
+				$("#b"+i+"").append(p1);
+			}
+		},300);
+	}
+	function trap(){
+		
+
+		
+		if(i == 4){
+			dice2.css("pointer-events","none");
+			p1.style.animation = "bigger .7s";
+			var go = setInterval(function(){
+				i++;
+				$("#b"+i+"").append(p1);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 4 + 100);
+			setTimeout(function(){
+				p1.style.animation = "none";
+				dice2.css("pointer-events","auto");
+				bruce();
+			},speed * 5);
+		}
+		if(j == 4){
+			dice1.css("pointer-events","none");
+			p2.style.animation = "bigger .7s";
+			var go = setInterval(function(){
+				j++;
+				$("#b"+j+"").append(p2);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 4 + 100);
+			setTimeout(function(){
+				p2.style.animation = "none";
+				dice1.css("pointer-events","auto");
+				clark();
+			},speed * 5);
+		}
+		if(i == 10){
+			dice2.css("pointer-events","none");
+			p1.style.animation = "bigger .7s";
+			var go = setInterval(function(){
+				i++;
+				$("#b"+i+"").append(p1);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 6 + 100);
+			setTimeout(function(){
+				p1.style.animation = "none";
+				dice2.css("pointer-events","auto");
+				bruce();
+			},speed * 7);
+		}
+		if(j == 10){
+			dice1.css("pointer-events","none");
+			p2.style.animation = "bigger .7s";
+			var go = setInterval(function(){
+				j++;
+				$("#b"+j+"").append(p2);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 6 + 100);
+			setTimeout(function(){
+				p2.style.animation = "none";
+				dice1.css("pointer-events","auto");
+				clark();
+			},speed * 7);
+		}
+		if(i == 12){
+			dice2.css("pointer-events","none");
+			p1.style.animation = "smaller .7s";
+			var go = setInterval(function(){
+				i--;
+				$("#b"+i+"").append(p1);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed*3 + 100);
+			setTimeout(function(){
+				p1.style.animation = "none";
+				dice2.css("pointer-events","auto");
+				bruce();
+			},speed * 4);
+		}
+		if(j == 12){
+			dice1.css("pointer-events","none");
+			p2.style.animation = "smaller .7s";
+			var go = setInterval(function(){
+				j--;
+				$("#b"+j+"").append(p2);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed*3 + 100);
+			setTimeout(function(){
+				p2.style.animation = "none";
+				dice1.css("pointer-events","auto");
+				clark();
+			},speed * 4);
+		}
+		if(i == 21){
+			dice2.css("pointer-events","none");
+			p1.style.animation = "smaller .7s";
+			var go = setInterval(function(){
+				i--;
+				$("#b"+i+"").append(p1);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 5 + 100);
+			setTimeout(function(){
+				p1.style.animation = "none";
+				dice2.css("pointer-events","auto");
+				bruce();
+			},speed * 6);
+		}
+		if(j == 21){
+			dice1.css("pointer-events","none");
+			p2.style.animation = "smaller .7s";
+			var go = setInterval(function(){
+				j--;
+				$("#b"+j+"").append(p2);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 5 + 100);
+			setTimeout(function(){
+				p2.style.animation = "none";
+				dice1.css("pointer-events","auto");
+				clark();
+			},speed * 6);
+		}
+		if(i == 26){
+			dice2.css("pointer-events","none");
+			p1.style.animation = "bigger .7s";
+			var go = setInterval(function(){
+				i++;
+				$("#b"+i+"").append(p1);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed + 100);
+			setTimeout(function(){
+				p1.style.animation = "none";
+				dice2.css("pointer-events","auto");
+				bruce();
+			},speed * 2);
+		}
+		if(j == 26){
+			dice1.css("pointer-events","none");
+			p2.style.animation = "bigger .7s";
+			var go = setInterval(function(){
+				j++;
+				$("#b"+j+"").append(p2);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed + 100);
+			setTimeout(function(){
+				p2.style.animation = "none";
+				dice1.css("pointer-events","auto");
+				clark();
+			},speed * 2);
+		}
+		if(i == 28){
+			dice2.css("pointer-events","none");
+			p1.style.animation = "smaller .7s";
+			var go = setInterval(function(){
+				i--;
+				$("#b"+i+"").append(p1);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 10 + 100);
+			setTimeout(function(){
+				p1.style.animation = "none";
+				dice2.css("pointer-events","auto");
+				bruce();
+			},speed * 11);
+		}
+		if(j == 28){
+			dice1.css("pointer-events","none");
+			p2.style.animation = "bigger .7s";
+			var go = setInterval(function(){
+				j--;
+				$("#b"+j+"").append(p2);
+			},speed);
+			setTimeout(function(){
+				clearInterval(go);
+			},speed * 10 + 100);
+			setTimeout(function(){
+				p2.style.animation = "none";
+				dice1.css("pointer-events","auto");
+				clark();
+			},speed * 11);
+		}
+		if(i == 7){
+			c1.css("visibility","visible");
+			c2.css("visibility","hidden");
+			dice1.css("pointer-events","auto");
+		}
+		if(j == 7){
+			c2.css("visibility","visible");
+			c1.css("visibility","hidden");
+			dice2.css("pointer-events","auto");
+		}
+		if(i == 17){
+			alert("Superman sucks!");
+			i = 1;
+			$("#b"+i+"").append(p1);
+		}
+		if(j == 17){
+			alert("Batman sucks!");
+			j = 1;
+			$("#b"+j+"").append(p2);
+		}
+	}
+	$(function(){			
+		dice1.on("click", function(){
+			let num = Math.ceil(Math.random()*6);
+			let bgi = Math.ceil(Math.random()*2);
+			dice1.css("background-image", "url(img/s"+bgi+".jpg");
+			setTimeout(function(){
+				dice1.css("background-image", "url(img/"+num+".jpg");
+			}, 300);
+			dice1.css("pointer-events","none");
+			dice2.css("pointer-events","auto");
+			if(num == 1){
+				setTimeout(function(){
+					i++;
+					$("#b"+i+"").append(p1);
+					c1.css("visibility","hidden");
+					c2.css("visibility","visible");
+					trap();
+					bruce();
+				},speed);
+				;
+			}
+			if(num == 2){
+				var move = setInterval(function(){
+					i++;
+					$("#b"+i+"").append(p1);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c1.css("visibility","hidden");
+					c2.css("visibility","visible");
+					trap();
+					bruce();
+				},speed*2 + 100);
+				;
+			}
+			if(num == 3){
+				var move = setInterval(function(){
+					i++;
+					$("#b"+i+"").append(p1);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c1.css("visibility","hidden");
+					c2.css("visibility","visible");
+					trap();
+					bruce();
+				},speed*3 + 100);
+				;
+			}
+			if(num == 4){
+				var move = setInterval(function(){
+					i++;
+					$("#b"+i+"").append(p1);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c1.css("visibility","hidden");
+					c2.css("visibility","visible");
+					trap();
+					bruce();
+				},speed * 4 + 100);
+				;
+			}
+			if(num == 5){
+				var move = setInterval(function(){
+					i++;
+					$("#b"+i+"").append(p1);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c1.css("visibility","hidden");
+					c2.css("visibility","visible");
+					trap();
+					bruce();
+				},speed * 5 + 100);
+				;
+			}
+			if(num == 6){
+				var move = setInterval(function(){
+					i++;
+					$("#b"+i+"").append(p1);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c1.css("visibility","hidden");
+					c2.css("visibility","visible");
+					trap();
+					bruce();
+				},speed * 6 + 100);
+				;
+			}
+		})
+		dice2.on("click", function(){
+			let num = Math.ceil(Math.random()*6);
+			let bgi = Math.ceil(Math.random()*2);
+			dice2.css("background-image", "url(img/s"+bgi+".jpg");
+			setTimeout(function(){
+				dice2.css("background-image", "url(img/"+num+".jpg");
+			}, 300);
+			dice2.css("pointer-events","none");
+			dice1.css("pointer-events","auto");
+			if(num == 1){
+				setTimeout(function(){
+					j++;
+					$("#b"+j+"").append(p2);
+					c2.css("visibility","hidden");
+					c1.css("visibility","visible");
+					trap();
+					clark();
+				},speed);
+				;
+			}
+			if(num == 2){
+				var move = setInterval(function(){
+					j++;
+					$("#b"+j+"").append(p2);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c2.css("visibility","hidden");
+					c1.css("visibility","visible");
+					trap();
+					clark();
+				},speed*2 + 100);
+				;
+			}
+			if(num == 3){
+				var move = setInterval(function(){
+					j++;
+					$("#b"+j+"").append(p2);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c2.css("visibility","hidden");
+					c1.css("visibility","visible");
+					trap();
+					clark();
+				},speed*3 + 100);
+				;
+			}
+			if(num == 4){
+				var move = setInterval(function(){
+					j++;
+					$("#b"+j+"").append(p2);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c2.css("visibility","hidden");
+					c1.css("visibility","visible");
+					trap();
+					clark();
+				},speed * 4 + 100);
+				;
+			}
+			if(num == 5){
+				var move = setInterval(function(){
+					j++;
+					$("#b"+j+"").append(p2);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c2.css("visibility","hidden");
+					c1.css("visibility","visible");
+					trap();
+					clark();
+				},speed * 5 + 100);
+				;
+			}
+			if(num == 6){
+				var move = setInterval(function(){
+					j++;
+					$("#b"+j+"").append(p2);
+				}, speed);
+				setTimeout(function(){
+					clearInterval(move);
+					c2.css("visibility","hidden");
+					c1.css("visibility","visible");
+					trap();
+					clark();
+				},speed * 6 + 100);
+				;
+			}
+		})
+	})
+	var check = setInterval(function(){
+		if(end.lastElementChild.getAttribute("id") == "player1"){
+			alert("Batman won!!!");
+			clearInterval(check);
+			location.reload();
+		}
+		if(end.lastElementChild.getAttribute("id") == "player2"){
+			alert("Superman won!!!");
+			clearInterval(check);
+			location.reload();
+		}
+	},1000);
+
+</script>
+
+<div style="text-align:center;">
+<p>更多小游戏：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+</body>
+</html>
