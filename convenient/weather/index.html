@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery仿iPhone天气预报代码 - 站长素材</title>
+
+<link type="text/css" href="style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div id="mainBody">
+    <div id="cloud1" class="cloud"></div>
+    <div id="cloud2" class="cloud"></div>
+</div>
+
+<div id="weather"><img src="images/cloud.png" width="300"></div>
+
+<table cellspacing="0">
+	<thead>
+		 <tr>
+			 <td style="border-top-left-radius:10px;">
+				 <div class="paraLeft" id="local">当地天气</div>
+				 <div class="paraLeft" id="city">武汉</div>
+				 <div class="paraLeft" id="hour">每小时天气预报</div>
+			 </td>
+			 <td>&nbsp;</td>
+			 <td style="border-top-right-radius:10px;"><div id="temper">6°</div></td>
+		 </tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			 <td>星期一</td>
+			 <td><img src="images/sunshine_0.png"></td>
+			 <td><span class="blue">3°</span><span>7°</span></td>
+		</tr>
+		<tr class="even">
+			 <td>星期二</td>
+			 <td><img src="images/sunshine_0.png" /></td>
+			 <td><span class="blue">-1°</span><span>9°</span></td>
+		</tr>
+		<tr>
+			 <td>星期三</td>
+			 <td><img src="images/sunshine_0.png" /></td>
+			 <td><span class="blue">-2°</span><span>7°</span></td>
+		</tr>
+		<tr class="even">
+			 <td>星期四</td>
+			 <td><img src="images/sunshine_0.png"  /></td>
+			 <td><span class="blue">-2°</span><span>7°</span></td>
+		</tr>
+		 <tr>
+			 <td>星期五</td>
+			 <td><img src="images/sunshine_0.png" /></td>
+			 <td><span class="blue">-2°</span><span>9°</span></td>
+		</tr>
+		<tr class="even">
+			 <td>星期六</td>
+			 <td><img src="images/sunshine_0.png" /></td>
+			 <td><span class="blue">1°</span><span>11°</span></td>
+		</tr>
+	</tbody>
+	
+		
+	<tfoot>
+		 <tr>
+			 <td style="border-bottom-left-radius:10px;">
+			 <div class="paraLeft" id="update">更新于</div>
+			 </td>
+			 <td><span id="time1"></span></td>
+			 <td  style="border-bottom-right-radius:10px;"><span id="time2"></span></td>
+		 </tr>
+	</tfoot>
+</table>
+
+<script src="jquery-1.7.min.js" type="text/javascript" ></script>
+<script src="common.js" type="text/javascript"></script>
+
+<div style="text-align:center;margin:-100px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>
