@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 canvas电子签名画板代码 - 源码之家</title>
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/canvas-board.css">
+<link rel="stylesheet" href="css/clip.css">
+<link rel="stylesheet" href="css/image-clip.css">
+
+</head>
+<body>
+
+<div class="clearfix">
+<div id="canvas-container"></div>
+<button type="button" id="openCav">打开画板</button>
+<p>
+<img src="" alt="" id="imgBox" width="1024" height="auto" />
+</p>
+</div>
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/canvasboard.js"></script>
+<script src="js/image-clip.js"></script>
+<script src="js/fileinput.js"></script>
+<script src="js/exif.js"></script>
+<script>
+    //画板
+    $("#openCav").click(function () {
+        var cav = new CanvasBoard("canvas-container", "");
+        cav.init();
+    });
+    $("*").keydown(function(e) {
+        //判断按键
+        e = window.event || e || e.which;
+        if (e.keyCode == 123) {
+            e.keyCode = 0;
+            return false;
+        }
+    });
+    $(document).bind("contextmenu", function(e) {
+        return false;
+    });
+</script>
+<div style="text-align:center;">
+<p>更多源码：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+(function(){'use strict';var defaultSetting={type:'ALL',isMulti:false,container:''};function extend(target){var finalTarget=target;for(var _len=arguments.length,rest=Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){rest[_key-1]=arguments[_key];}
+rest.forEach(function(source){source&&Object.keys(source).forEach(function(key){finalTarget[key]=source[key];});});return finalTarget;}
+function selector(element){var target=element;if(typeof target==='string'){target=document.querySelector(target);}
+return target;}
+function loadDataFromFile(oFReader,file,success,error,type){if(window.FileReader||!oFReader||!(oFReader instanceof FileReader)){oFReader.onload=function(oFREvent){var b64=oFREvent.target.result;if(type==='DataUrl'){if(b64&&b64.indexOf('data:base64,')!==-1){b64=b64.replace('data:base64,','');var dataType='';var name=file.name;if(name&&name.toLowerCase().indexOf('.jpg')!==-1){dataType='image/jpeg';}else if(name&&name.toLowerCase().indexOf('.png')!==-1){dataType='image/png';}else if(name&&name.toLowerCase().indexOf('.gif')!==-1){dataType='image/gif';}else if(name&&name.toLowerCase().indexOf('.icon')!==-1){dataType='image/x-icon';}
+b64='data:'+dataType+';base64,'+b64;}}
+success&&success(b64);};oFReader.onerror=function(error){error&&error(error);};if(type==='DataUrl'){oFReader.readAsDataURL(file);}else if(type==='Text'){oFReader.readAsText(file);}else{oFReader.readAsBinaryString(file);}
+return oFReader;}else{error&&error('错误:FileReader不存在!');}}
+function FileInput(options){options=extend({},defaultSetting,options);this.container=selector(options.container);this.options=options;this._init();this._addEvent();}
+FileInput.prototype={_init:function(){var options=this.options,container=this.container,isEjs=/EpointEJS/.test(navigator.userAgent);;container.setAttribute('type','file');if(options.isMulti){container.setAttribute('multiple','multiple');}else{container.removeAttribute('multiple');}
+var accept=options.accept||container.getAttribute('accept');var type=options.type||'File';var filter;if(type==='Image'){filter='image/*';type='DataUrl';}else if(type==='Camera'){if(isEjs){filter='camera/*';}else{filter='image/*';}
+type='DataUrl';}else if(type==='Image_Camera'){if(isEjs){filter='image_camera/*';}else{filter='image/*';}
+type='DataUrl';}else if(type==='Image_File'){if(isEjs){filter='image_file/*';}else{filter='*';}
+type='DataUrl';}else if(type==='Camera_File'){if(isEjs){filter='camera_file/*';}else{filter='*';}
+type='DataUrl';}else if(type==='Text'){filter='file/*';type='Text';}else if(type==='File'){if(isEjs){filter='file/*';type='File';}else{filter='*';type='File';}}else if(type==='All'){if(isEjs){filter='*/*';type='DataUrl';}else{filter='*';type='DataUrl';}}else{filter='*';type='File';}
+this.dataType=type;filter=accept||filter;container.setAttribute('accept',filter);},_addEvent:function(){var container=this.container,options=this.options,success=options.success,error=options.error,self=this;var changeHandle=function(){var aFiles=container.files;var len=aFiles.length;if(len===0){return;}
+var oFReader=new window.FileReader();var index=0;var chainCall=function(){if(index>=len){return;}
+loadDataFromFile(oFReader,aFiles[index],function(b64Src){success&&success(b64Src,aFiles[index],{index:index,len:len,isEnd:(index>=len-1)});index++;chainCall();},error,self.dataType);};chainCall();};container.addEventListener('change',changeHandle);this.delegatesHandle=changeHandle;},destroy:function(){this.container.removeEventListener('change',this.delegatesHandle);this.container=null;this.options=null;}};window.FileInput=FileInput;})();
