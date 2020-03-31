@@ -1,0 +1,56 @@
+#cont{
+  width:482px;
+  height:250px;
+ background:url("http://www.google.com/logos/2014/womensday14/sprite-initial.png");
+  background-position:-20px -10px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  margin:-125px 0 0 -241px;
+  transform:scale(.8);
+}
+#btn{
+  width:60px;
+  height:78px;
+  position:absolute;
+  left:204px;
+  top:64px;
+  background:url("http://www.google.com/logos/2014/womensday14/sprite-initial.png");
+  background-position:-1495px -110px; 
+  z-index:10;
+}
+#circle{
+  opacity:0;
+  width:79px;
+  height:79px;
+  position:absolute;
+  top:60px;
+  left:184px;
+ background:url("http://www.google.com/logos/2014/womensday14/sprite-initial.png");
+  background-position:-1495px -190px;
+  z-index:1;
+}
+#btn:hover{
+  cursor:pointer;
+  background-position:-1495px -30px;
+}
+#play:checked~#cont #btn{
+  display:none;
+}
+#play:checked~#cont #circle{
+  opacity:1;
+  animation:roll 1.8s linear infinite;
+}
+#play:checked~#cont{
+  animation:run 1.2s steps(1,end) infinite;
+}
+@keyframes run{
+  0%{background-position:-20px -10px;}
+  33%{background-position:-521px -10px;}
+  66%{background-position:-1012px -10px;}
+  100%{background-position:-20px -10px;}
+}
+@keyframes roll{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
