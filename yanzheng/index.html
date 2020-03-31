@@ -211,4 +211,28 @@ function randomColor() {//得到随机的颜色值
 </script>
     
     
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动验证</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="./style.js"></script>
+</head>
+<body>
+    <div id="slideBar"></div>
+    <script type="text/javascript">
+        var dataList = ["0","1"];
+        var options = {
+            dataList: dataList,
+            success:function(){  
+                console.log("show");  
+            },
+            fail: function(){
+                console.log("fail");  
+            }
+        };
+        SliderBar("slideBar", options);
+    </script>
+</body>
 </html>
