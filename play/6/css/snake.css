@@ -1,0 +1,22 @@
+/* CSS Document */
+#canvas #food{
+	background:#FF0;
+}
+#canvas #snakeHead{
+	background:blue
+}
+#canvas{
+		position:relative;
+		background:#00FF00;
+		margin:auto;
+		width:600px;
+		height:400px;
+}
+#canvas div{
+	border:0px;
+	position:absolute;
+	background:#F00;
+	width:20px;
+	height:20px;
+	border-radius:10px
+}
