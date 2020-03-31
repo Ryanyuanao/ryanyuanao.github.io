@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery百度登录图片角度转正代码 - 源码之家</title>
+
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/yz.js" type="text/javascript" charset="utf-8"></script>
+
+<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	button{width: 300px;line-height: 30px;}
+	.box {
+		margin: 0 auto;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		height: 420px;
+		width: 300px;
+		margin-left: -150px;
+		margin-top: -210px;
+		border: 1px solid #ccc;
+		background-color: #fff;
+		border-radius: 25px;
+		display: none;
+		z-index: 2;
+	}
+
+	.top-s {
+		font-size: 12px;
+		color: #ccc;
+		display: block;
+		text-align: center;
+		margin-left: 25px;
+		margin-top: 25px;
+		margin-bottom: 5px;
+	}
+
+	.top-x {
+		font-size: 18px;
+		color: black;
+		display: block;
+		text-align: center;
+		margin-bottom: 45px;
+	}
+
+	.cuo {
+		float: right;
+		margin-right: 10px;
+		margin-top: 5px;
+		cursor: pointer;
+	}
+
+	body {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+</style>
+</head>
+
+<body>
+
+<button class="btn">点击查看效果</button>
+<div class="box">
+	<img src="image/cw.png" class="cuo">
+	<span class="top-s">身份验证</span>
+	<span class="top-x">拖动滑块，使图片角度为正</span>
+	<div id="rotateWrap1">
+	<div class="rotateverify-contaniner">
+			<div class="rotate-can-wrap">
+				<canvas class="rotateCan rotate-can" width="200" height="200"></canvas>
+				<div class="statusBg status-bg"></div>
+			</div>
+			<div class="control-wrap slideDragWrap">
+				<div class="control-tips">
+					<p class="c-tips-txt cTipsTxt">滑动将图片转正</p>
+				</div>
+				<div class="control-bor-wrap controlBorWrap"></div>
+				<div class="control-btn slideDragBtn">
+					<i class="control-btn-ico"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	// 加一个div全部 然后设置display：block；
+	$(function () {
+		// 点击按钮
+		$(".btn").click(function () {
+			console.log('123123');
+			$(".box").css("display", "block");
+			$("body").css({ "background": "#807878" });
+			$(".btn").attr("disabled", true);
+		})
+		//    点击x
+		$(".cuo").click(function () {
+			$(".box").css("display", "none");
+			$("body").css("background", "#fff");
+			$(".btn").attr("disabled", false);
+		})
+		//1
+		var myRotateVerify = new RotateVerify('#rotateWrap1', {
+			initText: '滑动将图片转正',//默认
+			slideImage: ['image/1.png', 'image/2.png', 'image/4.png', 'image/5.png'],//arr  [imgsrc1,imgsrc2] 或者str 'imgsrc1'
+			slideAreaNum: 10,// 误差范围角度 +- 10(默认)
+			getSuccessState: function (res) {//验证通过 返回  true;
+				// console.log('例1' + res);
+			}
+		})
+	})
+</script>
+
+<div style="text-align:center;">
+<p>更多源码：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+</body>
+</html>
