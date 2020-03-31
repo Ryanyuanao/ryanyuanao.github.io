@@ -1,0 +1,618 @@
+﻿/* CSS Document */
+body {margin:0 auto; padding:0;font-size:12px; color:#000;text-align:center;line-height:22px;font-family:Arial, Helvetica, sans-serif，verdana;}
+body div{margin:0 auto;overflow:hidden;}
+div,form,img,ul,ol,dl,dt,dd,p{margin: 0; padding: 0; border: 0;overflow:hidden;}
+h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+table,td,tr,th{font-size:12px;}
+li{list-style-type:none}
+
+/* 链接颜色 */
+
+a:link {color: #005EAC; text-decoration:none;}
+a:visited {color: #005EAC;text-decoration:none;}
+a:hover {color: #fd2828; text-decoration:underline;}
+a:active {color: #005EAC;}
+
+/* 颜色属性 [定义规则，小写c加颜色名称] */
+
+.cRed,a.cRed:link,a.cRed:visited{ color:#c00;}
+.cDRed,a.cDRed:link,a.cDRed:visited{color:#c00;font-size:14px;font-weight:bold;}
+.cDRed1,a.cDRed1:link,a.cDRed1:visited{font-size:18px;font-weight:bold;color:#CC0000}
+.cDRed2{font-size:14px;font-weight:bold;color:#CC0000}
+.cGreen,a.cGreen:link,a.cGreen:visited{color:#69AA19;}
+.cBlue,a.cBlue:link,a.cBlue:visited{color:#005EAC;}
+
+/* 字体属性*/
+
+.fon16{ font-size:16px;}
+.fon14{ font-size:14px;}
+.fB{font-weight:bold;}
+.fI{ font-style:italic}
+.fl{float:left;}
+.fr{float:right;}
+.items{width:700px;}
+
+/* 字体颜色*/
+
+.green{color:#008000;}
+.red{color:red}
+.blue{color:blue}
+.pink{color:#c00}
+.gray{color:#aaa}
+.yellow{color:#ff0;}
+.black{color:#333;}
+
+/* 首页 */
+
+/* 头部和搜索 */
+
+.topbg{width:100%;background:url(http://www.227g.com/images2/topbg.gif) repeat-x center top;}
+.w950{width:950px;margin:0px auto;}
+.flo_l{float:left;}
+.flo_r{float:right;}
+.foot{border-top:1px solid #ECE2ED;color:#808080;line-height:30px;margin-top:22px;padding-bottom:30px;}
+.head1{height:101px;background:url(http://www.227g.com/images2/kuang1.gif) no-repeat 0 90px;}
+.logo{width:202px;padding-top:10px;}
+.head2{width:748px;}
+.rcor{margin-top:32px;height:30px;}
+.rcor li{float:left;margin-left:16px;}
+.rcor li a:link,.rcor li a:visited{color:#666;}
+.rcor img{float:left;padding:6px 6px 0 0;}
+.nav{width:724px;font-size:14px;font-weight:bold;}
+.nav li{float:left;width:98px;margin-right:5px;height:29px;line-height:29px;}
+.nav li a:link,.nav li a:visited{color:#005EAC;}
+.nav li a:hover{text-decoration:none;}
+.nav1{width:98px;height:29px;background:url(http://www.tool.cx/img/nav1.gif) no-repeat 0 0;}
+.nav2{width:98px;height:29px;background:url(http://www.tool.cx/img/nav2.gif) no-repeat 0 0;}
+.knr{width:948px;border-left:1px solid #A4C4DC;border-right:1px solid #A4C4DC;margin:0px auto;zoom:1;}
+.head3{height:10px;background:url(http://www.227g.com/images2/kuang1.gif) no-repeat 0 -10px;margin-bottom:8px;margin:0px auto;width:950px}
+.bkuang{padding:5px 8px;}
+.skuang{float:left;padding-left:12px;}
+.skuang li{float:left;}
+.skbg1{width:4px;height:66px;background:url(http://www.227g.com/images2/kuang2.gif) no-repeat 0 0;}
+.skbg2{width:420px;height:64px;background-color:#F6F8FC;border-top:1px solid #E6E2ED;border-bottom:1px solid #E6E2ED;}
+.skbg3{width:4px;height:66px;background:url(http://www.227g.com/images2/kuang2.gif) no-repeat -4px 0;}
+.info{width:400px;padding:5px 10px;text-align:left;}
+.info li{width:400px;line-height:25px;}
+.iptq,.iptq li{width:390px;}
+.skbg4{width:24px;height:66px;background:url(http://www.tool.cx/img/tqyb.gif) no-repeat 0 0;}
+.skbg5{width:440px;height:64px;background-color:#F6F8FC;border-top:1px solid #E6E2ED;border-bottom:1px solid #E6E2ED;}
+.tq{padding:8px 0 0 5px;color:#005EAC;}
+.tq li{float:left;width:145px;text-align:left;}
+.tq li img{display:block;float:left;margin-right:10px;width:48px;height:48px;}
+.tq li a:hover{text-decoration:none;color:#005EAC;}
+.search{float:left;width:520px; padding:0px 0px 0px 16px;}
+.serint{width:340px;border:1px solid #7F9DB9;background-color:#fff;padding:4px 0;font-size:16px;}
+.ssbutton{float:left;display:block;width:88px;text-align:center;line-height:27px;height:26px;color: #333;font-size:14px;background: url(http://www.tool.cx/img/ssbt.gif) repeat-x 0 0;cursor: pointer;}
+.ssbutton:link,.ssbutton:visited{color:#000;}
+.ssbutton:hover{color:#000;background: url(http://www.tool.cx/img/ssbt1.gif) repeat-x 0 0;text-decoration:none;}
+
+/* 分类 */
+
+.flk{width:960px;margin:0px auto;margin-bottom:8px;}
+.flk li{float:left;}
+.flkbg1{width:960px;height:9px;background:url(http://www.tool.cx/img/kuang3.gif) no-repeat 0 0;}
+.flkbg2{width:938px;padding:0 5px;background-color:#F6F8FC;border-left:1px solid #A3C4DB;border-right:1px solid #A3C4DB;}
+.flkbg3{width:950px;height:9px;background:url(http://www.tool.cx/img/kuang3.gif) no-repeat 0 -9px;}
+.flbt{float:left;width:400px;background:url(http://www.tool.cx/img/arrow.gif) no-repeat 12px 3px;font-size:14px;font-weight:bold;text-align:left;padding-left:28px;}
+.more img{float:right;padding:6px 10px 3px 0;}
+
+
+
+
+
+/*图标推荐区*/
+.IND_TJ_area{width:100%;}
+a.Ico_aBox{position:relative;width:226px; height:60px; float:left; margin:1px 3px; display:inline; text-decoration:none;cursor:pointer!important;cursor:hand}
+a.Ico_aBox:hover{text-decoration:none;background:url(http://www.tool.cx/img/bgbut.gif) no-repeat;}
+.Ico_aBox_icon{position:absolute; top:7px; left:5px; width:42px; height:42px;background:url(http://www.tool.cx/img/icons.gif) no-repeat;}
+.Ico_aBox_icon1{position:absolute; top:7px; left:5px; width:42px; height:42px;}
+.Ico_aBox_tit{ position:absolute; left:56px; top:10px;font-size:14px; font-weight:bold; color:#005EAC;}
+.Ico_aBox_intro{position:absolute; left:56px; top:30px;font-size:12px}
+a.Ico_aBox .Ico_aBox_intro{ color:#666}
+a.Ico_aBox:hover .Ico_aBox_intro{ color:#333}
+.INico1{ background:url(http://www.tool.cx/img/icons/wnl.gif)}/*万年历*/
+.INico2{ background:url(http://www.tool.cx/img/icons/shouji.gif)}/*手机归属地*/
+.INico72{ background:url(http://www.388g.com/images2/kuaidi.gif)}/*快递*/
+.INico4{ background:url(http://www.tool.cx/img/icons/youbian.gif)}/*邮编区号*/
+.INico5{ background:url(http://www.tool.cx/img/icons/ditu.gif)}/*地图*/
+.INico6{ background:url(http://www.tool.cx/img/icons/tel.gif)}/*常用电话号码*/
+.INico7{ background:url(http://www.tool.cx/img/icons/sfz.gif)}/*身份证查询*/
+.INico8{ background:url(http://www.tool.cx/img/icons/yiyuan.gif)}/*各地医院*/
+.INico9{ background:url(http://www.tool.cx/img/icons/time.gif)}/*北京时间*/
+.INico10{ background:url(http://www.tool.cx/img/icons/sx.gif)}/*生肖查询*/
+.INico11{ background:url(http://www.tool.cx/img/icons/ycq.gif)}/*预产期*/
+.INico12{ background:url(http://www.tool.cx/img/icons/aqq.gif)}/*安全期*/
+.INico13{ background:url(http://www.tool.cx/img/icons/nannv.gif)}/*生男生女*/
+.INico14{ background:url(http://www.tool.cx/img/icons/zhongcaoyao.gif)}/*中草药大全*/
+.INico15{ background:url(http://www.tool.cx/img/icons/ip.gif)}/*IP查询*/
+.INico16{ background:url(http://www.tool.cx/img/icons/yanfang.gif)}/*民间验方*/
+.INico17{ background:url(http://www.tool.cx/img/icons/zhoupu.gif)}/*营养粥谱*/
+.INico18{ background:url(http://www.tool.cx/img/icons/tianqi.gif)}/*天气预报*/
+.INico19{ background:url(http://www.tool.cx/img/icons/chaodai.gif)}/*历史朝代表*/
+.INico20{ background:url(http://www.tool.cx/img/icons/huafei.gif)}/*话费查询*/
+.INico21{ background:url(http://www.tool.cx/img/icons/tv.gif)}/*节目预报*/
+.INico22{ background:url(http://www.tool.cx/img/icons/today.gif)}/*历史上的今天*/
+.INico23{ background:url(http://www.tool.cx/img/icons/pianfang.gif)}/*偏方*/
+.INico24{ background:url(http://www.tool.cx/img/icons/mingfang.gif)}/*名方*/
+.INico25{ background:url(http://www.tool.cx/img/icons/jiufang.gif)}/*酒方*/
+.INico26{ background:url(http://www.tool.cx/img/icons/xiehouyu.gif)}/*歇后语*/
+.INico27{ background:url(http://www.tool.cx/img/icons/meng.gif)}/*周公解梦*/
+.INico28{ background:url(http://www.tool.cx/img/icons/sjjx.gif)}/*手机号码吉凶*/
+.INico29{ background:url(http://www.tool.cx/img/icons/qqliao.gif)}/*QQ强制对话*/
+.INico30{ background:url(http://www.tool.cx/img/icons/huoxing.gif)}/*火星文转换*/
+.INico31{ background:url(http://www.tool.cx/img/icons/gangqin.gif)}/*钢琴键盘*/
+.INico32{ background:url(http://www.tool.cx/img/icons/finance.gif)}/*财务工具*/
+.INico33{ background:url(http://www.tool.cx/img/icons/buyhouse.gif)}/*购房计算器*/
+.INico34{ background:url(http://www.tool.cx/img/icons/stock.gif)}/*股市行情查询*/
+.INico35{ background:url(http://www.tool.cx/img/icons/tax.gif)}/*营业税计算*/
+.INico36{ background:url(http://www.tool.cx/img/icons/jsq.gif)}/*智能计算器*/
+.INico37{ background:url(http://www.tool.cx/img/icons/wendu.gif)}/*温度换算器*/
+.INico38{ background:url(http://www.tool.cx/img/icons/changdu.gif)}/*长度换算器*/
+.INico39{ background:url(http://www.tool.cx/img/icons/zhongliang.gif)}/*重量换算器*/
+.INico40{ background:url(http://www.tool.cx/img/icons/mianji.gif)}/*面积换算器*/
+.INico41{ background:url(http://www.tool.cx/img/icons/reliang.gif)}/*功/能/热量换算*/
+.INico42{ background:url(http://www.tool.cx/img/icons/tiji.gif)}/*体积和容量换算器*/
+.INico43{ background:url(http://www.tool.cx/img/icons/gonglv.gif)}/*功率换算器*/
+.INico44{ background:url(http://www.tool.cx/img/icons/yali.gif)}/*压力换算器*/
+.INico45{ background:url(http://www.tool.cx/img/icons/fanyi.gif)}/*在线翻译*/
+.INico46{ background:url(http://www.tool.cx/img/icons/speed.gif)}/*网速测试*/
+.INico47{ background:url(http://www.tool.cx/img/icons/htmljs.gif)}/*HTML转换JS*/
+.INico48{ background:url(http://www.tool.cx/img/icons/biaozhi.gif)}/*交通标志大全*/
+.INico49{ background:url(http://www.tool.cx/img/icons/miyu.gif)}/*谜语大全*/
+.INico50{ background:url(http://www.tool.cx/img/icons/yanyu.gif)}/*民间谚语*/
+.INico51{ background:url(http://www.tool.cx/img/icons/mail.gif)}/*邮箱图标*/
+.INico52{ background:url(http://www.tool.cx/img/icons/nianling.gif)}/*年龄计算器*/
+.INico53{ background:url(http://www.tool.cx/img/icons/tizhi.gif)}/*体质指数计算*/
+.INico54{ background:url(http://www.388g.com/logoimg/xunlei.gif)}/*迅雷下载地址转换*/
+.INico55{ background:url(http://www.tool.cx/img/icons/base64.gif)}/*BASE64加密、解密*/
+.INico56{ background:url(http://www.tool.cx/img/icons/jsmi.gif)}/*JS加密/解密*/
+.INico57{ background:url(http://www.tool.cx/img/icons/utf8.gif)}/*UTF8 转换工具*/
+.INico58{ background:url(http://www.tool.cx/img/icons/url16.gif)}/*URL16进制加密*/
+.INico59{ background:url(http://www.tool.cx/img/icons/md5.gif)}/*MD5加密*/
+.INico60{ background:url(http://www.tool.cx/img/icons/escape.gif)}/*Escape加密/解密*/
+.INico61{ background:url(http://www.tool.cx/img/icons/ascii2.gif)}/*字符串转换为ASCII码*/
+.INico62{ background:url(http://www.tool.cx/img/icons/naojin.gif)}/*脑筋急转弯*/
+.INico3{ background:url(http://www.tool.cx/img/icons/ico.gif)}/*ICO图标生成*/
+.INico64{ background:url(http://www.tool.cx/img/icons/mingyan.gif)}/*名人名言*/
+.INico65{ background:url(http://www.tool.cx/img/icons/raokouling.gif)}/*绕口令*/
+.INico66{ background:url(http://www.tool.cx/img/icons/jianfan.gif)}/*繁简转换工具*/
+.INico67{ background:url(http://www.tool.cx/img/icons/ubb.gif)}/*HTML/UBB互转*/
+.INico68{ background:url(http://www.tool.cx/img/icons/riqicha.gif)}/*两日距离天数计算*/
+.INico69{ background:url(http://www.tool.cx/img/icons/huoche.gif)}/*列车时刻表*/
+.INico70{ background:url(http://www.tool.cx/img/icons/jsformat.gif)}/*JS/HTML美化压缩*/
+.INico71{ background:url(http://www.tool.cx/img/icons/ascii.gif)}/*ASCII字形生成器*/
+.INico63{ background:url(http://www.388g.com/images2/gushu.gif)}/*古书排版*/
+.INico73{ background:url(http://www.tool.cx/img/icons/qqjx.gif)}/*QQ吉凶测试*/
+.INico74{ background:url(http://www.tool.cx/img/icons/ymzhxg.gif)}/*页面转换效果*/
+.INico75{ background:url(http://www.tool.cx/img/icons/regular.gif)}/*正则表达式检测*/
+.INico76{ background:url(http://www.388g.com/images2/pr.gif)}/*PR查询*/
+.INico77{ background:url(http://www.tool.cx/img/icons/whois.gif)}/*whois查询*/
+.INico78{ background:url(http://www.tool.cx/img/icons/color.gif)}/*网页颜色代码选择器*/
+.INico79{ background:url(http://www.tool.cx/img/icons/wubipinyin.gif)}/*五笔/拼音查询*/
+.INico80{ background:url(http://www.tool.cx/img/icons/chengyu.gif)}/*成语词典*/
+.INico81{ background:url(http://www.tool.cx/img/icons/pinyin.gif)}/*汉字转换拼音*/
+.INico82{ background:url(http://www.tool.cx/img/icons/zidian.gif)}/*新华字典*/
+.INico83{ background:url(http://www.tool.cx/img/icons/chepai.gif)}/*车牌号码查询*/
+.INico84{ background:url(http://www.tool.cx/img/icons/zhishu.gif)}/*百度指数查询*/
+.INico85{ background:url(http://www.tool.cx/img/icons/shoulu.png)}/*搜索引擎收录查询*/
+.INico86{ background:url(http://www.tool.cx/img/icons/link.png)}/*友情链接批量检查*/
+.INico87{ background:url(http://www.tool.cx/img/icons/meta.png)}/*meta信息检测*/
+.INico88{ background:url(http://www.tool.cx/img/icons/density.png)}/*挂检测密度检测*/
+.INico89{ background:url(http://www.tool.cx/img/icons/badlink.png)}/*死链|全站pr查询*/
+.INico90{ background:url(http://www.tool.cx/img/icons/keys.png)}/*关键词排名查询*/
+.INico91{ background:url(http://www.tool.cx/img/icons/baidu.png)}/*百度近日收录查询*/
+.INico92{ background:url(http://www.tool.cx/img/icons/google.png)}/*google近日收录查询*/
+.INico93{ background:url(http://www.tool.cx/img/icons/zhizhu.png)}/*搜索引擎模拟抓取*/
+.INico94{ background:url(http://www.tool.cx/img/icons/yuming.png)}/*域名删除时间查询*/
+.INico95{ background:url(http://www.tool.cx/img/icons/linkip.png)}/*友情链接ip查询*/
+.INico96{ background:url(http://www.tool.cx/img/icons/server.png)}/*相同IP站点查询*/
+.INico97{ background:url(http://www.tool.cx/img/icons/alexa.png)}/*Alexa排名查询*/
+.INico98{ background:url(http://www.tool.cx/img/icons/linkjc.png)}/*友情链接检查*/
+.INico99{ background:url(http://www.tool.cx/img/icons/deleteym.png)}/*CNNIC到期域名查询*/
+.INico100{ background:url(http://www.tool.cx/img/icons/wei.png)}/*在线伪原创工具*/
+.INico101{ background:url(http://www.tool.cx/img/icons/ssyqfl.png)}/*搜索引擎反向链接查询*/
+.INico102{ background:url(http://www.tool.cx/img/icons/unix.png)}/*Unix时间戳转换*/
+.INico103{ background:url(http://www.tool.cx/img/icons/dir.png)}/*目录后台扫描*/
+.INico104{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico105{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico106{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico107{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico108{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico109{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico110{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico111{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico112{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico113{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico114{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico115{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico116{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico117{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico118{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico119{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+.INico120{ background:url(http://www.tool.cx/img/icons/icons.gif)}/**/
+
+
+/* 查询结果 */
+
+.result{width:440px;border:1px solid #A4C4DC;background-color:#fff;margin-right:45px;text-align:left;font-family:"宋体";line-height:20px;}
+.res_bt{background-color:#E2EFFE;padding:3px 8px;border-bottom:1px solid #A4C4DC;font-size:14px;font-weight:bold;color:#49494A;text-align:left;}
+.res_bt img{float:right;display:block;padding:4px 0 0 0;}
+.res_body{padding:6px 8px;color:#49494A;}
+.res_copy{padding:8px 10px;width:420px;background-color:#F6F8FC;border-top:1px solid #D5E6F3;}
+
+/* 内页小导航 */
+.xdh{width:934px;padding:0 8px;text-align:left;}
+.xdh li{float:left;width:151px;padding:2px 0 1px 0;margin:0 2px;background:url(http://www.227g.com/images2/xdhbg.gif) repeat-y 150px 0;}
+.xdh_img{float:left;width:28px;height:23px;background:url(http://www.tool.cx/img/icon/icon.gif) no-repeat;}
+.xdh_img_1{float:left;width:28px;height:23px;}
+.xdh_bt{float:left;height:23px;line-height:23px;font-size:14px;}
+
+#ful2{width:950px;padding:0 8px;text-align:left;}
+#ful2 li{float:left;width:310px;padding:2px 0 1px 0;margin:0 2px;background:url(http://www.227g.com/images2/xdhbg.gif) repeat-y 309px 0;text-indent:10px}
+#ful2 .xdh_img{float:left;width:28px;height:23px;background:url(http://www.tool.cx/img/icon/icon.gif) no-repeat;}
+#ful2 .xdh_img_1{float:left;width:28px;height:23px;}
+#ful2 .xdh_bt{float:left;height:23px;line-height:23px;font-size:14px;}
+#ful2 a:hover {background:none;}
+
+
+/* 内页小导航 */
+.xdh2{width:934px;padding:0 8px;text-align:left;}
+.xdh2 li{float:left;width:302px;padding:2px 0 1px 0;margin:0 2px;background:url(http://www.227g.com/images2/xdhbg.gif) repeat-y 301px 0;}
+.xdh2_img{float:left;width:28px;height:23px;background:url(http://www.tool.cx/img/icon/icon.gif) no-repeat;}
+.xdh2_img_1{float:left;width:28px;height:23px;}
+.xdh2_bt{float:left;height:23px;line-height:23px;font-size:14px;}
+
+.knr2{width:948px;border:none;}
+
+
+.ts{height:23px;line-height:23px;font-size:14px;
+}
+a.xdhbg{color:#333;width:148px;height:23px;float:left;display:inline;text-decoration:none;cursor:pointer!important;cursor:hand;}
+a.xdhbg:hover{color:#005EAC;font-weight:bold;text-decoration:none;background:url(http://www.tool.cx/img/bgbut1.gif) no-repeat;}
+.xdhbg1{width:148px;height:23px;background:url(http://www.tool.cx/img/bgbut1.gif) no-repeat;}
+.xico1{ background:url(http://www.tool.cx/img/icon/wnl.gif)}/*万年历*/
+.xico2{ background:url(http://www.tool.cx/img/icon/shouji.gif)}/*手机归属地*/
+.xico3{ background:url(http://www.tool.cx/img/icon/kuaidi.gif)}/*快递*/
+.xico4{ background:url(http://www.tool.cx/img/icon/youbian.gif)}/*邮编区号*/
+.xico5{ background:url(http://www.tool.cx/img/icon/ditu.gif)}/*地图*/
+.xico6{ background:url(http://www.tool.cx/img/icon/tel.gif)}/*常用电话号码*/
+.xico7{ background:url(http://www.tool.cx/img/icon/sfz.gif)}/*身份证查询*/
+.xico8{ background:url(http://www.tool.cx/img/icon/yiyuan.gif)}/*各地医院*/
+.xico9{ background:url(http://www.tool.cx/img/icon/time.gif)}/*北京时间*/
+.xico10{ background:url(http://www.tool.cx/img/icon/sx.gif)}/*生肖查询*/
+.xico11{ background:url(http://www.tool.cx/img/icon/ycq.gif)}/*预产期*/
+.xico12{ background:url(http://www.tool.cx/img/icon/aqq.gif)}/*安全期*/
+.xico13{ background:url(http://www.tool.cx/img/icon/nannv.gif)}/*生男生女*/
+.xico14{ background:url(http://www.tool.cx/img/icon/zhongcaoyao.gif)}/*中草药大全*/
+.xico15{ background:url(http://www.tool.cx/img/icon/ip.gif)}/*IP查询*/
+.xico16{ background:url(http://www.tool.cx/img/icon/yanfang.gif)}/*民间验方*/
+.xico17{ background:url(http://www.tool.cx/img/icon/zhoupu.gif)}/*营养粥谱*/
+.xico18{ background:url(http://www.tool.cx/img/icon/tianqi.gif)}/*天气预报*/
+.xico19{ background:url(http://www.tool.cx/img/icon/chaodai.gif)}/*历史朝代表*/
+.xico20{ background:url(http://www.tool.cx/img/icon/huafei.gif)}/*话费查询*/
+.xico21{ background:url(http://www.tool.cx/img/icon/tv.gif)}/*节目预报*/
+.xico22{ background:url(http://www.tool.cx/img/icon/today.gif)}/*历史上的今天*/
+.xico23{ background:url(http://www.tool.cx/img/icon/pianfang.gif)}/*偏方*/
+.xico24{ background:url(http://www.tool.cx/img/icon/mingfang.gif)}/*名方*/
+.xico25{ background:url(http://www.tool.cx/img/icon/jiufang.gif)}/*酒方*/
+.xico26{ background:url(http://www.tool.cx/img/icon/xiehouyu.gif)}/*歇后语*/
+.xico27{ background:url(http://www.tool.cx/img/icon/meng.gif)}/*周公解梦*/
+.xico28{ background:url(http://www.tool.cx/img/icon/sjjx.gif)}/*手机号码吉凶*/
+.xico29{ background:url(http://www.tool.cx/img/icon/qqliao.gif)}/*QQ强制对话*/
+.xico30{ background:url(http://www.tool.cx/img/icon/huoxing.gif)}/*火星文转换*/
+.xico31{ background:url(http://www.tool.cx/img/icon/gangqin.gif)}/*钢琴键盘*/
+.xico32{ background:url(http://www.tool.cx/img/icon/finance.gif)}/*财务工具*/
+.xico33{ background:url(http://www.tool.cx/img/icon/buyhouse.gif)}/*购房计算器*/
+.xico34{ background:url(http://www.tool.cx/img/icon/stock.gif)}/*股市行情查询*/
+.xico35{ background:url(http://www.tool.cx/img/icon/tax.gif)}/*营业税计算*/
+.xico36{ background:url(http://www.tool.cx/img/icon/jsq.gif)}/*智能计算器*/
+.xico37{ background:url(http://www.tool.cx/img/icon/wendu.gif)}/*温度换算器*/
+.xico38{ background:url(http://www.tool.cx/img/icon/changdu.gif)}/*长度换算器*/
+.xico39{ background:url(http://www.tool.cx/img/icon/zhongliang.gif)}/*重量换算器*/
+.xico40{ background:url(http://www.tool.cx/img/icon/mianji.gif)}/*面积换算器*/
+.xico41{ background:url(http://www.tool.cx/img/icon/reliang.gif)}/*功/能/热量换算*/
+.xico42{ background:url(http://www.tool.cx/img/icon/tiji.gif)}/*体积和容量换算器*/
+.xico43{ background:url(http://www.tool.cx/img/icon/gonglv.gif)}/*功率换算器*/
+.xico44{ background:url(http://www.tool.cx/img/icon/yali.gif)}/*压力换算器*/
+.xico45{ background:url(http://www.388g.com/logoimg/fanyi.gif)}/*在线翻译*/
+.xico46{ background:url(http://www.tool.cx/img/icon/speed.gif)}/*网速测试*/
+.xico47{ background:url(http://www.tool.cx/img/icon/htmljs.gif)}/*HTML转换JS*/
+.xico48{ background:url(http://www.tool.cx/img/icon/biaozhi.gif)}/*交通标志大全*/
+.xico49{ background:url(http://www.tool.cx/img/icon/miyu.gif)}/*谜语大全*/
+.xico50{ background:url(http://www.tool.cx/img/icon/yanyu.gif)}/*民间谚语*/
+.xico51{ background:url(http://www.388g.com/logoimg/mail.gif)}/*邮箱图标*/
+.xico52{ background:url(http://www.tool.cx/img/icon/nianling.gif)}/*年龄计算器*/
+.xico53{ background:url(http://www.tool.cx/img/icon/tizhi.gif)}/*体质指数计算*/
+.xico54{ background:url(http://www.388g.com/logoimg/xunlei.gif)}/*迅雷下载地址转换*/
+.xico55{ background:url(http://www.tool.cx/img/icon/base64.gif)}/*BASE64加密、解密*/
+.xico56{ background:url(http://www.tool.cx/img/icon/jsmi.gif)}/*JS加密/解密*/
+.xico57{ background:url(http://www.tool.cx/img/icon/utf8.gif)}/*UTF8 转换工具*/
+.xico58{ background:url(http://www.tool.cx/img/icon/url16.gif)}/*URL16进制加密*/
+.xico59{ background:url(http://www.tool.cx/img/icon/md5.gif)}/*MD5加密*/
+.xico60{ background:url(http://www.tool.cx/img/icon/escape.gif)}/*Escape加密/解密*/
+.xico61{ background:url(http://www.tool.cx/img/icon/ascii2.gif)}/*字符串转换为ASCII码*/
+.xico62{ background:url(http://www.tool.cx/img/icon/naojin.gif)}/*脑筋急转弯*/
+.xico63{ background:url(http://www.388g.com/logoimg/ico.gif)}/*ICO图标生成*/
+.xico64{ background:url(http://www.tool.cx/img/icon/mingyan.gif)}/*名人名言*/
+.xico65{ background:url(http://www.tool.cx/img/icon/raokouling.gif)}/*绕口令*/
+.xico66{ background:url(http://www.388g.com/logoimg/jianfan.gif)}/*繁简转换工具*/
+.xico67{ background:url(http://www.tool.cx/img/icon/ubb.gif)}/*HTML/UBB互转*/
+.xico68{ background:url(http://www.tool.cx/img/icon/riqicha.gif)}/*两日距离天数计算*/
+.xico69{ background:url(http://www.tool.cx/img/icon/huoche.gif)}/*列车时刻表*/
+.xico70{ background:url(http://www.tool.cx/img/icon/jsformat.gif)}/*JS/HTML美化压缩*/
+.xico71{ background:url(http://www.tool.cx/img/icon/ascii.gif)}/*ASCII字形生成器*/
+.xico72{ background:url(http://www.388g.com/logoimg/gushu.gif)}/*古书排版*/
+.xico73{ background:url(http://www.tool.cx/img/icon/qqjx.gif)}/*QQ吉凶测试*/
+.xico74{ background:url(http://www.tool.cx/img/icon/ymzhxg.gif)}/*页面转换效果*/
+.xico75{ background:url(http://www.tool.cx/img/icon/regular.gif)}/*正则表达式检测*/
+.xico76{ background:url(http://www.388g.com/images2/pr.gif)}/*PR查询*/
+.xico77{ background:url(http://www.tool.cx/img/icon/whois.gif)}/*whois查询*/
+.xico78{ background:url(http://www.tool.cx/img/icon/color.gif)}/*网页颜色代码选择器*/
+.xico79{ background:url(http://www.388g.com/logoimg/wubipinyin.gif)}/*五笔/拼音查询*/
+.xico80{ background:url(http://www.tool.cx/img/icon/chengyu.gif)}/*成语词典*/
+.xico81{ background:url(http://www.388g.com/logoimg/pinyin.gif)}/*汉字转换拼音*/
+.xico82{ background:url(http://www.tool.cx/img/icon/zidian.gif)}/*新华字典*/
+.xico83{ background:url(http://www.tool.cx/img/icon/chepai.gif)}/*车牌号码查询*/
+.xico84{ background:url(http://www.tool.cx/img/icon/zhishu.gif)}/*百度指数查询*/
+.xico85{ background:url(http://www.tool.cx/img/icon/shoulu.png)}/*搜索引擎收录查询*/
+.xico86{ background:url(http://www.tool.cx/img/icon/link.png)}/*友情链接批量检查*/
+.xico87{ background:url(http://www.tool.cx/img/icon/meta.png)}/*meta信息检测*/
+.xico88{ background:url(http://www.tool.cx/img/icon/density.png)}/*关键词密度检测*/
+.xico89{ background:url(http://www.tool.cx/img/icon/badlink.png)}/*死链|全站pr查询*/
+.xico90{ background:url(http://www.tool.cx/img/icon/keys.png)}/*关键词排名查询*/
+.xico91{ background:url(http://www.tool.cx/img/icon/baidu.png)}/*百度近日收录查询*/
+.xico92{ background:url(http://www.tool.cx/img/icon/google.png)}/*google近日收录查询*/
+.xico93{ background:url(http://www.tool.cx/img/icon/zhizhu.png)}/*搜索引擎模拟抓取*/
+.xico94{ background:url(http://www.tool.cx/img/icon/yuming.png)}/*域名删除时间查询*/
+.xico95{ background:url(http://www.tool.cx/img/icon/linkip.png)}/*友情链接ip查询*/
+.xico96{ background:url(http://www.tool.cx/img/icon/server.png)}/*相同IP站点查询*/
+.xico97{ background:url(http://www.tool.cx/img/icon/alexa.png)}/*Alexa排名查询*/
+.xico98{ background:url(http://www.tool.cx/img/icon/linkjc.png)}/*友情链接检查*/
+.xico99{ background:url(http://www.tool.cx/img/icon/deleteym.png)}/*CNNIC到期域名查询*/
+.xico100{ background:url(http://www.tool.cx/img/icon/wei.png)}/*在线伪原创工具*/
+.xico101{ background:url(http://www.tool.cx/img/icon/ssyqfl.png)}/*搜索引擎反向链接查询*/
+.xico102{ background:url(http://www.tool.cx/img/icon/unix.png)}/*Unix时间戳转换*/
+.xico103{ background:url(http://www.tool.cx/img/icon/dir.png)}/*目录后台扫描*/
+.xico104{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico105{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico106{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico107{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico108{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico109{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico110{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico111{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico112{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico113{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico114{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico115{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico116{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico117{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico118{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico119{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+.xico120{ background:url(http://www.tool.cx/img/icon/icon.gif)}/**/
+
+
+
+/* 手机,IP */
+
+.head4{height:55px;background:url(http://www.227g.com/images2/kuang4.gif) no-repeat;width:950px;margin:0px auto;}
+.Ico_aBox{position:relative;width:226px; height:60px; float:left; margin:3px; display:inline;}
+.city_int{border:1px solid #ace; background:#fff; font:bold 12px/14px Verdana; color:#07519A; padding:3px; height:14px; }
+table th{color:#07519A;}
+.mobile_main{width:728px;margin:15px auto;}
+.mobile_k{border:1px solid #AACCEE;}
+.mob_body{padding:10px 20px;font-size:14px;line-height:32px;}
+.mob_int{width:210px;padding:2px 0;font-size:16px;}
+.mob_anniu{width:106px;height:26px;line-height:26px;border:0;font-size:14px;background:url(http://www.tool.cx/img/anniubg2.gif) no-repeat;cursor:pointer!important;cursor:hand;}
+.mob_body span{font-size:20px;font-weight:bolder;color:#FE701A}
+.mob_dress{margin:3px 0 10px 0;padding:8px 0;text-align:left;font-size:14px;border-bottom:1px dashed #AACCEE;}
+.mob_copy1{width:58px;height:26px;line-height:26px;border:0;font-size:14px;background:url(http://www.tool.cx/img/anniubg1.gif) no-repeat;cursor:pointer!important;cursor:hand;}
+.mob_copy2{width:106px;height:26px;line-height:26px;border:0;font-size:14px;background:url(http://www.tool.cx/img/anniubg2.gif) no-repeat;cursor:pointer!important;cursor:hand;}
+.mob_int1{width:410px;padding:4px 0;color:#808080;border:1px solid #AACCEE;}
+.mob_body1{padding:10px 20px;font-size:14px;text-align:left;}
+.mob_body1 p{height:25px;line-height:25px;padding:7px 0;}
+.mob_test{padding:5px 12px;border:1px solid #AACCEE;background-color:#ECF1F9;color:#07519A;font-size:14px;text-align:left;line-height:24px;margin-bottom:8px;}
+.mar10{margin-bottom:10px;}
+.mob_det{border:1px solid #ddd;padding:5px 12px;color:#808080;text-align:left;}
+.mob_ace{border:1px solid #ace;padding:5px 12px;color:#808080;text-align:left;}
+.mob_ace_h{border:1px solid #ace;padding:5px 12px;color:#000000;text-align:left;}
+.mob_hei{border:1px solid #ccc;padding:5px 12px;color:#000000;text-align:left;}
+
+.self_ip{padding:6px;font-size:14px;color:#666;}
+.ip_anniu{width:92px;height:23px;line-height:23px;border:0;font-size:12px;color:#333;background:url(http://www.tool.cx/img/iconbg.gif) no-repeat;cursor:pointer!important;cursor:hand;}
+.ip_copy{padding:8px 10px;width:706px;background-color:#F6F8FC;border-top:1px solid #D5E6F3;}
+.edit_bt{background-color:#E2EFFE;padding:3px 10px;border-bottom:1px solid #A4C4DC;font-size:14px;font-weight:bold;color:#07519A;text-align:left;}
+.edit_body td{font-size:14px;text-align:left;}
+.edit_anniu{width:70px;height:26px;line-height:26px;border:0;font-size:14px;background:url(http://www.tool.cx/img/anniubg1.gif) no-repeat;cursor:pointer!important;cursor:hand;}
+.edit_result{color:#c00;font-size:14px;text-align:left;margin-top:60px;}
+.edit_result img{display:block;float:left;}
+
+/* 天气预报 */
+
+.tq_main{width:908px;margin:15px auto;}
+.tq_top{width:882px;padding:12px;text-align:left;}
+.tq_cityname{width:190px;color:#c00;font-size:16px;font-weight:bold;}
+.tq_ss{width:650px;font-size:14px;}
+.tq_ss_sl{font-size:14px;color:#666;height:24px;}
+.tq_ss_int{width:170px;padding:2px 0;font-size:16px;}
+.tq_today{width:908px;margin-bottom:12px;}
+.tq_today_nav{height:32px;background:url(http://www.tool.cx/img/bluedot.gif) repeat-x 0 31px;}
+.tq_today_nav li{float:left;font-size:14px;width:220px;margin-right:5px;}
+.tq_tab1{border:1px solid #AACCEE;border-bottom:0;background-color:#fff;height:32px;line-height:30px;font-weight:bold;}
+.tq_tab2{border:1px solid #AACCEE;background-color:#E3EFFF;height:30px;line-height:30px;}
+.tq_today_body{width:886px;padding:10px;border:1px solid #AACCEE;border-top:0;}
+.tq_today_det1{width:340px;height:170px;background-color:#E3EFFF;}
+.tq_today_det1_l{float:left;width:205px;}
+.tq_today_det1_l li{float:left;width:200px;}
+.tq_today_det1_l li img{width:82px;height:82px;padding:10px 0 4px 0;}
+.tq_today_det1_l li.wd{font-size:25px;font-weight:bold;}
+.tq_today_det1_r{float:right;width:130px;}
+.tq_today_det1_r ul{float:left;margin-top:16px;}
+.tq_today_det1_r li{width:102px;line-height:20px;}
+.tq_today_det1_r li img{padding-top:3px;}
+.tq_today_det1_r li.bz{float:left;width:69px;background-color:#98afd5;color:#fff;margin:-4px 0 0 16px!important;*margin:-4px 0 0 8px;}
+.tq_today_det2{float:left;width:165px;height:170px;background-color:#E3EFFF;margin-left:8px;}
+.tq_eveday_nav{text-align:left;font-size:14px;font-weight:bold;line-height:26px;}
+.tq_eveday_pl{width:908px;margin:6px 0;}
+.tq_eveday_bk{float:left;width:137px;margin-right:12px;background-color:#EFF7FB;border:1px solid #A3C4DB;}
+.tq_eveday_bk_nav{font-weight:bold;background-color:#C7E0F5;border-top:1px solid #ECF6FF;border-left:1px solid #ECF6FF;border-bottom:1px solid #A3C4DB;}
+.tq_eveday_bk_det{width:117px;margin:0px 5px;}
+.tq_eveday_bk_det li{padding:1px 0;overflow:hidden;white-space:nowrap; }
+.tq_eveday_bk_det li img{width:58px;height:58px;}
+.tq_eveday_bk.no_marg{margin-right:0;}
+.tq_code{background-color:#EFF7FB;border-left:1px solid #A3C4DB;border-top:1px solid #A3C4DB;margin-top:10px;}
+.tq_code td{padding:10px;border-right:1px solid #A3C4DB;border-bottom:1px solid #A3C4DB;}
+.tq_code_sty1{width:66px;font-weight:bold;}
+.tq_code_sty2{width:430px;}
+.code_int{width:270px;padding:3px 0;}
+.tq_zs li{float:left;width:410px;margin:4px 6px;background-color:#E3EFFF;padding:10px;text-align:left;}
+.tq_zs li img{float:left;display:block;padding-right:20px;}
+.wnlHead{width:500px;}
+#todayNow{color:#333;}
+
+/* 天气预报修改 */
+.tqCity{font-size:30px;font-weight:bold;color:#005EAC;text-align:center;line-height:30px;}
+.tqCity a:hover{text-decoration:none;color:#005EAC;}
+.tqnew{width:908px;margin:0 auto 20px auto;border-bottom:2px solid #3E72B4;}
+.tqnewL{width:186px;background:url(http://www.tool.cx/img/tqkbg0.gif) repeat-y;}
+.tqnewR{width:722px;}
+.tqLdate{width:186px;height:25px;padding-top:10px;font-weight:bold;background:url(http://www.tool.cx/img/tqkbg1.gif) no-repeat;}
+.tqLinfo{padding-bottom:15px;}
+.tq_det{width:176px;margin:12px 5px;}
+.tq_det li{padding:2px 0;}
+.tq_det li img{width:100px;height:100px;margin-bottom:6px;}
+.tqRl{width:134px;margin:0 15px;padding:10px;text-align:left;border-top:1px solid #658AB9;}
+.tqwk{width:160px;height:140px;border:1px solid #658AB9;margin:10px auto;}
+.zrtq{float:left;width:722px;background:url(http://www.tool.cx/img/tqkbg2a.gif) repeat-y;}
+.zrxtq{width:722px;padding:8px 0 6px 0;background:url(http://www.tool.cx/img/tqkbg2.gif) no-repeat;}
+.zrxx{float:left;padding-left:10px;width:110px;}
+.zrxkk{width:110px;height:154px;background:url(http://www.tool.cx/img/tqxk.gif) no-repeat;}
+.zrxkk h3{font-size:12px;padding:2px 0 5px 0;}
+.zrxkk li{line-height:21px;}
+.zrxkk li img{width:54px;height:54px;margin-bottom:1px;}
+.shzsBt{float:left;width:722px;}
+.shzsBt li{float:left;}
+.zsBtbg1{width:12px;height:28px;background:url(http://www.tool.cx/img/tqkbg3.gif) no-repeat;}
+.zsBtbg2{width:12px;height:28px;background:url(http://www.tool.cx/img/tqkbg4.gif) no-repeat;}
+.zsBtbg3{width:698px;height:28px;line-height:28px;background:#3E72B4;color:#fff;font-size:14px;font-weight:bold;}
+.shzsBd{background:#fff;width:720px;border-right:2px solid #3E72B4;}
+.shzsBd li{width:680px;margin:3px 20px;padding:5px 2px;border-bottom:1px dashed #AFAFAF;line-height:27px;text-align:left;color:#444;}
+.shzsBd li img{float:left;padding:0 8px 0 0;}
+.shzsBd li b{padding-right:8px;color:#000;}
+.tq_eveday_nav span{padding-left:10px;font-size:12px;font-weight:normal;line-height:26px;color:#444;}
+.cityCen{width:560px;background:#fff;filter:progid:DXImageTransform.Microsoft.Shadow (Color=#666666,Direction=120,strength=5)}
+.cityCen h2{width:538px;padding:0 10px;font-size:12px;height:21px;border:1px solid #4C7CB0;background:url(http://www.tool.cx/img/citybg1.gif) repeat-x;font-weight:normal;text-align:left;}
+.cityCen h2 span{float:right;}
+.cityCen h2 a:link,.cityCen h2 a:visited,.cityCen h2 a:hover{color:#000;text-decoration:none;}
+.cityNav{width:560px;border-left:1px solid #4C7CB0;}
+.cityNav li{float:left;width:69px;height:31px;line-height:31px;border-right:1px solid #4C7CB0;background:url(http://www.tool.cx/img/citybg2.gif) no-repeat;font-size:14px;font-weight:bold;}
+.cityNav li a:link,.cityNav li a:visited,.cityNav li a:hover{display:block;color:#fff;text-decoration:none;}
+.cityNav li.xuanz a:link,.cityNav li.xuanz a:visited{display:block;background:#fff;color:#000;}
+.cityBd{border:1px solid #4C7CB0;border-top:0;padding:3px 0 0 0;}
+.cityBd th,.cityBd td{padding:2px 0;border-bottom:1px solid #ccc;}
+.cityBd th{width:70px;color:#005EAC;font-weight:normal;}
+.cityBd td{text-align:left;line-height:20px;}
+.cityBd a{padding-right:10px;}
+.cityBd a:link,.cityBd a:visited{color:#666;}
+
+.thermometer{
+   background:url(http://www.tool.cx/img/gage-bg.gif) no-repeat 0 bottom;
+   float:left;
+   height:119px;
+
+   position:relative;
+   width:54px; 
+}
+.box-blue{
+    background:#f6f9fc;
+    border:1px #cee0f4 solid;
+    margin-bottom:10px;
+    padding:10px;
+
+	margin-bottom:0;
+}
+.thermometer-ga{
+    background:url(http://www.tool.cx/img/gage.gif) no-repeat center top;
+    bottom:27px;
+    left:30px;
+    height:50px;
+    position:absolute;
+    width:10px;
+}
+.thermometers{
+    font-size:28px;
+    font-weight:bold;
+    height:80px;
+    line-height:80px;
+    text-align:left;
+}
+#tempera,#wind{
+    float:left;
+    height:120px;
+    margin-right:40px;
+    width:154px;
+}
+.wind-dir{
+    background:url(http://www.tool.cx/img/wind.gif) no-repeat;
+    height:80px;
+    margin:0 auto;
+    width:80px;
+}
+#wind{
+    background:#f6f9fc url(http://www.tool.cx/img/bg-map.gif) no-repeat center center;
+    margin-right:0;
+    float:right;
+    text-align:center;
+}
+.wind-l{
+    background-position:0 -80px;
+}
+.wind-r{
+    background-position:-240px 0;
+}
+.wind-t{
+    background-position:-160px 0;
+}
+.wind-b{
+    background-position:-160px -80px;
+}
+.wind-rb{
+    background-position:-240px -80px;
+}
+.wind-lt{
+    background-position:-80px 0;
+}
+.wind-rt{
+    background-position:0 0;
+}
+.wind-lb{
+    background-position:-80px -80px;
+}
+.png{
+azimuth: expression(
+this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
+this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='scale')",
+this.src = "/tianqi/i/blank.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
+this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='scale')",
+this.runtimeStyle.backgroundImage = "none")),this.pngSet=true);
+}
+
+.white_content{display:none;position:absolute;top:47%;left:27%;width:560px;height:225px;background-color:white;z-index:1002;overflow:auto; text-align:left; overflow:hidden;}
+
+/* 分割线 */
+
+hr{border-bottom:1px dashed #ace;overflow:hidden;margin:1px 1%;height:0;}
+
+/* 边框 */
+
+.inpText {font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 14px; padding: 3px; border: #A4C4DC 1px solid; border-left-color: #A4C4DC; border-top-color: #A4C4DC; background: #FFFFFF;}
+textarea.inpText {overflow: auto; font-size: 13px;}
+.beiduwenzi{float:left;padding:12px 0px 0px 6px;}
+
+
+/* 1028 新造 */
+.tab_pad10 td {padding:10px;}
+.tab_pad4 td {padding:4px;}
+.tab_pad3 td {padding:3px;}
+.ga1 input {float:left;margin:4px;}
