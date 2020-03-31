@@ -1,0 +1,128 @@
+@import "compass/css3";
+
+$eyeDimensions: 100px;
+$smileWidth: 200px;
+$smileHeight: 100px;
+$toothHeight: $smileHeight/3;
+$toothWidth: $smileWidth/6;
+$tongueDimensions: $smileWidth/2;
+
+.readout{}
+
+*{
+  box-sizing: border-box;
+}
+.container {
+  width: 80%;
+  min-height: 400px;
+  background-color: #ee3a4c;
+  overflow: auto;
+  display: block; 
+  margin: 0 auto;
+  
+}
+.eyebox {
+  width: $smileWidth*2;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: $smileWidth/3;
+    margin-bottom: $smileHeight*.25;
+}
+.eye {
+  height: $eyeDimensions;
+  width: $eyeDimensions;
+  background-color: #ee3a4c;
+  border: 4px solid white;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+  padding: $eyeDimensions*.2;
+  overflow: hidden;
+  .pupil {
+    height: $eyeDimensions*.25;
+    width: $eyeDimensions*.25;
+    border-radius: 100%;
+    display: inline-block;
+    background-color: white;
+    position: absolute;
+    margin-left: -($eyeDimensions*.1);
+    left: $eyeDimensions*.5;
+    //top: 0;
+      margin: $eyeDimensions*.1;
+  }
+}
+.smile{
+     height:$smileHeight;
+     width:$smileWidth;
+     border-radius: 0 0 $smileWidth $smileWidth;
+     background: #770f1a;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: all .4s;
+  transform-origin: center;
+  &:hover {
+    transition: all .4s;
+    height: $smileHeight/3;
+    width: $smileHeight/3;
+    border-radius: 100%;
+    margin-top: $smileHeight*.5;
+  }
+  &:hover .teeth {
+    margin-left: -$toothWidth*.75;
+    margin-top: -$toothHeight*1.2;
+    transition: all .4s;
+  }
+  &:hover .tongue {
+    transition: all .4s;
+   margin-left: -$tongueDimensions/2;
+    /*margin-top: $tongueDimensions*2;*/
+  }
+  .teeth {
+    background-color: #fff;
+    transition: all .4s;
+    height: $toothHeight;
+    width: $toothWidth;
+    margin-left: (($smileWidth/2) - ($toothWidth*1.3));
+    position: relative;
+    &:after {
+      content: "";
+      background-color: #fff;
+      height: $toothHeight;
+      width: $toothWidth;
+      position: absolute;
+      left: $toothWidth*1.5;
+      top: 0;
+      z-index: 10000;
+    }
+  }
+  .tongue {
+    transition: all .4s;
+    height: $tongueDimensions;
+    width: $tongueDimensions;
+    background-color: pink;
+    border-radius: 100%;
+    margin-top: $smileHeight*.4;
+    //margin-left: (($smileWidth/2) - ($tongueDimensions));
+    margin-left: (($smileWidth/2) - ($tongueDimensions*.85));
+    display: inline-block;
+    position: relative;
+    &:after {
+      content: '';
+      height: $tongueDimensions;
+    width: $tongueDimensions;
+    background-color: pink;
+    border-radius: 100%;
+    display: inline-block;
+      position: absolute;
+      left: $tongueDimensions/2;
+      /*margin-top: 0;
+        margin-left: -($tongueDimensions/3);*/
+    }
+  }
+  .t2 {
+      
+  }
+    
+}
