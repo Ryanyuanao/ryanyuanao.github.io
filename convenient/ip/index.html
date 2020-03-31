@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>test</title>
+  <style type="text/css">
+    html body{margin: 0;font-family: sans-serif;color: #FF5722;font-size: 17px;zoom:70%;}
+    .wrap{
+      /*background: url(https://ws3.sinaimg.cn/large/005BYqpggy1fwssp6l39kj30p00dwtg7.jpg);
+      background-repeat: round;*/
+    }
+    .wrap img{
+      width: 100%;
+      margin: auto;
+    }
+    .main{
+      position: absolute;
+      top: 20%;
+      left: 5%;
+      width: 40%;
+      height: 40%;
+      border-radius: 20px;
+      padding: 3%;
+      background-color: rgba(158, 158, 158, 0.6);
+    }
+  </style>
+  <script type="text/javascript" src="https://apis.map.qq.com/tools/geolocation/min?key=EU4BZ-WO634-EHIUP-X5OUI-W72BO-6YBGL&referer=小高教学网用户探测"></script>
+  <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="wrap">
+  <img src="http://static.runoob.com/images/mix/3DF91CB4-0A60-444F-971D-88A58C4EDBFD.png">
+  <div class="main">
+    <p>设备型号：<span id="system"></span></p>
+    <p>浏 览 器：<span id="browser"></span></p>
+    <p>ＩＰ地址：<span id="ip"></span></p>
+    <p>实时位置：<span id="address"></span></p>
+    <p>北京时间：<span id="time"></span></p>
+  </div>
+</div>
+<script type="text/JavaScript">
+    var geolocation = new qq.maps.Geolocation();
+    var options = {timeout: 3000};
+    $.getJSON('https://api.uomg.com/api/visitor.info', {skey: '774740085'}, function(json) {
+        if (json.code == 1) {
+            $('#system').html(json.system);
+            $('#browser').html(json.browser);
+            $('#ip').html(json.ip);
+            $('#time').html(json.time);
+            getCurLocation();
+        }
+    });
+    function getCurLocation() {
+        geolocation.getLocation(showPrecise, showErr, options);
+    }
+    function showPrecise(position) {
+        if (position.province = position.city) {position.city = '';}
+        $('#address').html(position.nation+position.province+position.city+position.addr);
+        console.log(position);
+    };
+
+    function showErr() {
+        geolocation.getIpLocation(showProbably);
+    };
+    function showProbably(position){
+        if (position.province = position.city) {position.city = '';}
+        $('#address').html(position.nation+position.province+position.city);
+        console.log(position);
+    }
+</script>
+</body>
+</html>
