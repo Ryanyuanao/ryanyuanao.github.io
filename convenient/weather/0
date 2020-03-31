@@ -1,1 +1,17 @@
-0
+<!DOCTYPE html>
+<title>天气预报</title>
+<div style="margin: 5px">
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=34&icon=1&num=3"></iframe>
+</div>
+<div style="margin: 5px">
+<iframe frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=36&icon=5&num=1"></iframe>
+</div>
+<div>
+<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=pitaya" frameborder="0" width="300" height="500" allowtransparency="true"></iframe>
+</div>
+<iframe name="weather_inc" 
+	src="http://i.tianqi.com/index.php?c=code&id=7" 
+	style="border:solid 1px #7ec8ea" 
+	width="220" height="90" frameborder="0" 
+	marginwidth="0" marginheight="0" scrolling="no">
+</iframe>
