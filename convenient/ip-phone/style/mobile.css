@@ -1,0 +1,23 @@
+.table{
+    margin-top:28px;
+    background: #e5e5e5;
+    width:100%;
+    border-collapse: inherit;
+    border-spacing:1px;
+    color:#666;
+}
+.table th{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: normal;
+}
+.table td{
+    padding:10px 0;
+    text-align: center;
+    line-height: 24px;
+    background: #fff;
+}
+.table td span{
+    color:#3b5999
+}
