@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+<script src="js/vue.min.js"></script>
+
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+<title>Vue.js黄金基金收益计算器代码 - 源码之家</title>
+
+</head>
+<body>
+<div id="app">
+   
+    <div class="contentBox">
+        <div class="itemBox">
+            <label class="fontTitle">买入单价：</label>
+            <input class="textInput" type="number" id="buying" v-model = "buying" />
+            <span class="alert">元/克</span>
+        </div>
+        <div class="itemBox">
+            <label class="fontTitle">卖出单价：</label>
+            <input class="textInput" type="number" id="selling" v-model = "selling" />
+            <span class="alert">元/克</span>
+        </div>
+        <div class="itemBox">
+            <label class="fontTitle">手续费率：</label>
+            <input class="textInput" type="number" id="rate" v-model = "rate"  />
+            <span class="alert">%（默认手续费率为：3%）</span>
+        </div>
+        <div class="itemBox">
+            <label class="fontTitle">购买数量：</label>
+            <input class="textInput" type="number" id="num" v-model = "num"  />
+            <span class="alert">克</span>
+        </div>
+        <div class="itemBox">
+            <button class="btn" type="button" >计算买入情况</button>
+        </div>
+    </div>
+    <div class="resultBox">
+        <div class="itemBox">
+            成本价：<span id="cbj">{{cbj|numFilter}}</span>
+            <span id="cbj_count">（{{buying}} * {{num}}）</span>
+        </div>
+        <div class="itemBox">
+            手续费：<span id="sxf">{{sxf|numFilter}}</span>
+            <span id="sxf_count">（{{selling}} * {{num}} * {{rate}} * 0.01）</span>
+        </div>
+        <div class="itemBox">
+            卖出价：<span id="out_sell">{{out_sell|numFilter}}</span>
+        </div>
+        <div class="itemBox">
+            赎回获得：<span id="shget">{{shget|numFilter}}</span>
+        </div>
+        <div class="itemBox">
+            净收入：<span id="have">{{have|numFilter}}</span>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            buying : 0,
+            selling:0,
+            rate:0.3,
+            num:1,
+            cbj:0,
+            sxf:0,
+            shget:0,
+            have:0,
+            out_sell:0,
+            total_price:0,
+        },
+        methods: {
+            //计算结构
+            calculation:function(){
+                this.cbj = (this.buying * this.num).toFixed(2);//成本价
+                this.out_sell = this.selling * this.num;//卖出价
+                this.sxf = this.selling * this.num * this.rate * 0.01;//赎回获得
+                this.shget = this.out_sell - this.sxf;//赎回获得
+                this.have = this.out_sell - this.sxf - this.cbj;//净收入
+            },
+        },
+        computed :{
+        },
+        filters: {
+            numFilter (value) {
+                // 截取当前数据到小数点后两位
+                var realVal = parseFloat(value).toFixed(2)
+                return realVal
+            }
+        },
+        watch : {
+            buying:function(val) {
+                this.buying = val;
+                this.calculation();
+            },
+            selling : function (val) {
+                this.selling = val;
+                this.calculation();
+            },
+            rate:function(val){
+                this.rate = val;
+                this.calculation();
+            },
+            num:function(val){
+                this.num = val;
+                this.calculation();
+            },
+        }
+    })
+    
+</script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div style="text-align:center;">
+<p>更多源码：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+</html>
