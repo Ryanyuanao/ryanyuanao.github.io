@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="UTF-8">
+    <title>盒包围碰撞算法-圆形</title>
+    <style>
+        #stage {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<h1>是否碰撞：<span class="hitTest">否</span></h1>
+<canvas id="stage"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var stage = document.querySelector('#stage'),
+            ctx = stage.getContext('2d');
+        stage.width = 400;
+        stage.height = 400;
+
+
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            //根据地图数组碰撞将测
+            switch (e.keyCode) {
+                case 37:
+                    console.log("Left");
+                    if (balls[0].x > 0) {
+                        balls[0].x -= 2;
+                    }
+                    break;
+                case 38:
+                    console.log("Top");
+                    if (balls[0].y > 0) {
+                        balls[0].y -= 2;
+                    }
+                    break;
+                case 39:
+                    console.log("Right");
+                    if (balls[0].x < stage.width) {
+                        balls[0].x += 2;
+                    }
+                    break;
+                case 40:
+                    console.log("Bottom");
+                    if (balls[0].y < stage.height) {
+                        balls[0].y += 2;
+                    }
+                    break;
+
+                default:
+                    return false;
+            }
+        };
+
+        stage.addEventListener('click', function (event) {
+            var x = event.clientX - stage.getBoundingClientRect().left;
+            var y = event.clientY - stage.getBoundingClientRect().top;
+            balls[0].x = x - balls[0].r/2;
+            balls[0].y = y - balls[0].r/2;
+        });
+        
+        var player = {
+            x: stage.width / 2 - 20,
+            y: stage.height / 2 - 20,
+            r: 40,
+            c: "red"
+        },balls = [];
+        balls.push(player);
+
+        for (var i = 0; i < 10; i++) {
+            var ball = {
+                x: 60 * i,
+                y: 60 * i,
+                r: 40,
+                c: "blue"
+            };
+            balls.push(ball);
+        }
+
+        function createBall(x, y, r, c) {
+            ctx.beginPath();
+            ctx.fillStyle = c;
+            ctx.arc(x, y, r, 0, Math.PI*2);
+            ctx.fill();
+        }
+
+        function hitTest( source, target ) {
+            /* 源物体和目标物体都包含 x, y 以及 width, height */
+            return !(
+                Math.pow((source.x - target.x),2) + Math.pow((source.y - target.y),2) > Math.pow((source.r + target.r),2)
+            );
+        }
+
+        function update() {
+            ctx.globalAlpha=1;
+            ctx.clearRect(0, 0, 400, 400);
+            document.querySelector('.hitTest').innerHTML = "否";
+            for (var i = 1, len = balls.length; i < len; i++) {
+                createBall(balls[i].x, balls[i].y, balls[i].r, balls[i].c);
+                var flag = hitTest(balls[0],balls[i]);
+                if(flag){
+                    document.querySelector('.hitTest').innerHTML = "是";
+                    ctx.globalAlpha=0.5;
+                }
+            }
+            createBall(balls[0].x, balls[0].y, balls[0].r, balls[0].c);
+            requestAnimationFrame(update);
+        }
+
+
+        update();
+    };
+</script>
+</html>

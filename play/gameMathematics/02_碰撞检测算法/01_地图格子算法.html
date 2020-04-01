@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="UTF-8">
+    <title>地图格子算法</title>
+    <style>
+        #stage {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var stage = document.querySelector('#stage'),
+            ctx = stage.getContext('2d');
+        stage.width = 400;
+        stage.height = 400;
+
+        var mapArr = [
+            1, 0, 0, 1,
+            0, 0, 0, 1,
+            0, 1, 0, 0,
+            1, 0, 0, 1
+        ],rectIdx = 5;
+
+        //栅格线条
+        function drawGrid(context, color, stepx, stepy) {
+            context.strokeStyle = color;
+            context.lineWidth = 0.5;
+
+            for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
+                context.beginPath();
+                context.moveTo(i, 0);
+                context.lineTo(i, context.canvas.height);
+                context.stroke();
+            }
+            for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+                context.beginPath();
+                context.moveTo(0, i);
+                context.lineTo(context.canvas.width, i);
+                context.stroke();
+            }
+        }
+
+        function createRect(x, y, r, c) {
+            ctx.beginPath();
+            ctx.fillStyle = c;
+            ctx.rect(x, y, r, r);
+            ctx.fill();
+        }
+
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            //根据地图数组碰撞将测
+            switch (e.keyCode){
+                case 37:
+                    console.log("Left");
+                    if (rectIdx - 1 >= 0 && (rectIdx - 1) % 4 !== 3 && !mapArr[rectIdx - 1]) {
+                        rectIdx -= 1;
+                    }
+                    break;
+                case 38:
+                    console.log("Top");
+                    if (rectIdx - 4 >= 0 && !mapArr[rectIdx - 4]) {
+                        rectIdx -= 4;
+                    }
+                    break;
+                case 39:
+                    console.log("Right");
+                    if ((rectIdx + 1) % 4 !== 0 && !mapArr[rectIdx + 1]) {
+                        rectIdx += 1;
+                    }
+                    break;
+                case 40:
+                    console.log("Bottom");
+                    if (rectIdx + 4 < mapArr.length && !mapArr[rectIdx + 4]) {
+                        rectIdx += 4;
+                    }
+                    break;
+
+                default:
+                    return false;
+　　　　　　  }
+        };
+
+        function update() {
+            ctx.clearRect(0, 0, 400, 400);
+            drawGrid(ctx, 'lightgray', 100, 100);
+            var rect = {
+                x: rectIdx % 4 * 100,
+                y: rectIdx % 4 === 0 ? rectIdx / 4 * 100 : Math.floor(rectIdx / 4) * 100,
+                r: 100,
+                c: "blue"
+            };
+            createRect(rect.x, rect.y, rect.r, rect.c);
+            //根据地图数组创建色块
+            for (var i = 0, len = mapArr.length; i < len; i++) {
+                if (mapArr[i]) {
+                    createRect(i % 4 * 100, i % 4 === 0 ? i / 4 * 100 : Math.floor(i / 4) * 100, 100, "red");
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        update();
+    };
+</script>
+</html>

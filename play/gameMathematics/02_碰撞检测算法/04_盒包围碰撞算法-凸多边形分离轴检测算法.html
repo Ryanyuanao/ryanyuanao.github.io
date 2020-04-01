@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="UTF-8">
+    <title>盒包围碰撞算法-凸多边形分离轴检测算法</title>
+    <style>
+        #stage {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<h1>是否碰撞：<span class="hitTest">否</span></h1>
+<canvas id="stage"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var stage = document.querySelector('#stage'),
+            ctx = stage.getContext('2d');
+        stage.width = 400;
+        stage.height = 400;
+
+        var starPointArr = [];
+//        绘制五角星
+        function drawStar(ctx,r,R,x,y,rot,c){
+            ctx.beginPath();
+            for(var i =0;i<5;i++){
+                var startPosX = Math.cos((18 + i*72 - rot)/180 * Math.PI )*R + x,
+                    startPosY =  - Math.sin((18 + i*72 - rot)/180 * Math.PI)*R + y,
+                    endPosX = Math.cos((54 + i*72 - rot)/180 * Math.PI )*r + x,
+                    endPosY =  - Math.sin((54 + i*72 - rot)/180 * Math.PI)*r + y;
+                ctx.lineTo(startPosX,startPosY);
+                ctx.lineTo(endPosX, endPosY);
+                starPointArr.push(startPosX,startPosY,endPosX,endPosY);
+            }
+            ctx.closePath();
+            ctx.fillStyle = c;
+            ctx.lineWidth = 3;
+            ctx.lineJoin = "round";
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        var polygonPointArr = [];
+//        绘制多边形
+        function drawpolygon(numSides,radius,x,y){
+            ctx.beginPath();
+            for(i = 1;i<=numSides; i++){
+                var xPos = x+radius*Math.cos(2*Math.PI*i/numSides);
+                var yPos = x+radius*Math.sin(2*Math.PI*i/numSides);
+                polygonPointArr.push(xPos,yPos);
+                ctx.lineTo(xPos,yPos);
+            }
+            //创建完成 闭合路径
+            ctx.closePath();
+            ctx.lineWidth = 3;   //线宽
+            ctx.lineJoin = "round";
+            ctx.fillStyle = '#00f';
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        //两个向量的点积
+        function dotV2(v1,v2) {
+            return v1.x*v2.x+v1.y*v2.y;
+        }
+
+        //计算polyArr在轴线axis上的投影,polyArr是一系列点坐标的集合,数组表示
+        function calcProj(axis,polyArr) {
+            var v = {"x":polyArr[0],"y":polyArr[1]};
+            var d,min,max;
+            min = max = dotV2(axis,v);//计算投影轴与第一个坐标点的点积
+            for(var i=2;i<polyArr.length-1;i+=2) {
+                v.x=polyArr[i];
+                v.y=polyArr[i+1];
+                d = dotV2(axis,v);//计算v到投影轴的距离,遍历出最小和最大区间
+                min = (d<min)?d:min;
+                max = (d>max)?d:max;
+            }
+            return [min,max];
+        }
+
+        //计算同一个轴上线段的距离s1(min1,max1),s2(min2,max2),如果距离小于0则表示两线段有相交;
+        function segDist(min1,max1,min2,max2) {
+            if(min1<min2)
+            {
+                return min2-max1;
+            }
+            else
+            {
+                return min1-max2;
+            }
+        }
+
+        //判断两个多边形是否相交碰撞,p1,p2用于保存多边形点的数组
+        function isCollide(p1,p2) {
+            //定义法向量
+            var e = {"x":0,"y":0};
+            var p = p1,idx=0,len1=p1.length,len2=p2.length,px,py;//p缓存形状p1的数据
+            for(var i=0,len = len1+len2;i<len-1;i+=2)//遍历所有坐标点，i+=2代表xy轴两个坐标点
+            {
+                idx = i;
+                //计算两个多边形每条边
+                if(i>len1) {//当p1遍历完毕后，p缓存形状p2的数据,从新遍历
+                    p=p2;
+                    idx=(i-len1);//len2
+                }
+                if(i===p.length-2) {//p包含的点数据组成的最后一个坐标点
+                    px=p[0]-p[idx];//首尾的x轴相连
+                    py=p[1]-p[idx+1];//首尾的y轴相连
+                } else {
+                    px = p[idx+2]-p[idx];//递增的x轴相连
+                    py = p[idx+3]-p[idx+1];//递减的y轴相连
+                }
+                //得到边的法向量【垂直相交】，即投影轴
+                e.x = -py;
+                e.y = px;
+                //计算两个多边形在法向量上的投影
+                var pp1 = calcProj(e,p1);//涵盖到投影轴的最小值与最大值
+                var pp2 = calcProj(e,p2);
+                //计算两个线段在法向量上距离，如果大于0则可以退出，表示无相交
+                if(segDist(pp1[0],pp1[1],pp2[0],pp2[1])>0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            //根据地图数组碰撞将测
+            switch (e.keyCode) {
+                case 37:
+                    console.log("Left");
+                    if (starPosX > 0) {
+                        starPosX -= 2;
+                    }
+                    break;
+                case 38:
+                    console.log("Top");
+                    if (starPosY > 0) {
+                        starPosY -= 2;
+                    }
+                    break;
+                case 39:
+                    console.log("Right");
+                    if (starPosX < stage.width) {
+                        starPosX += 2;
+                    }
+                    break;
+                case 40:
+                    console.log("Bottom");
+                    if (starPosY < stage.height) {
+                        starPosY += 2;
+                    }
+                    break;
+
+                default:
+                    return false;
+            }
+        };
+        
+        var starPosX = stage.width/2,starPosY = stage.height/2;
+        stage.addEventListener('click', function (event) {
+            var x = event.clientX - stage.getBoundingClientRect().left;
+            var y = event.clientY - stage.getBoundingClientRect().top;
+            starPosX = x;
+            starPosY = y;
+        });
+
+        function update() {
+            ctx.clearRect(0, 0, 400, 400);
+            starPointArr = [];
+            polygonPointArr = [];
+            drawpolygon(7,50,300,300);
+            drawStar(ctx,30,50,starPosX,starPosY,30,"yellow");
+            document.querySelector('.hitTest').innerHTML = "否";
+            var flag = isCollide(starPointArr, polygonPointArr);
+            if (flag) {
+                document.querySelector('.hitTest').innerHTML = "是";
+            }
+            requestAnimationFrame(update);
+        }
+
+        update();
+    };
+</script>
+</html>

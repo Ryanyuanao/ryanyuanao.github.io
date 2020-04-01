@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="UTF-8">
+    <title>盒包围碰撞算法-像素检测算法</title>
+    <style>
+        #stage {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<h1>包围盒是否碰撞：<span class="hitTestBox">否</span></h1>
+<h1>像素检测是否碰撞：<span class="hitTestPixel">否</span></h1>
+<canvas id="stage"></canvas>
+<img src="./images/penguin.png" alt="penguinImg" id="penguinImg" style="display:none" />
+<img src="./images/giraffe.png" alt="giraffeImg" id="giraffeImg" style="display:none" />
+</body>
+<script>
+    window.onload = function () {
+        var stage = document.querySelector('#stage'),
+            ctx = stage.getContext('2d');
+        stage.width = 600;
+        stage.height = 600;
+
+        //创建后台canvas
+        var bC = document.createElement("canvas");
+        bC.width = stage.width;
+        bC.height = stage.height;
+        var backBuf = bC.getContext("2d");
+
+        var penguin = document.querySelector('#penguinImg'),giraffe = document.querySelector('#giraffeImg');
+        var penguinImg = {
+            x:stage.width/2,
+            y:stage.height/2,
+            r:128,
+            data:null
+        },giraffeImg = {
+            x:100,
+            y:100,
+            r:128,
+            data:null
+        };
+
+        function drawImageBox(img,x,y,width,height){
+            ctx.beginPath();
+            ctx.rect(x,y,width,height);
+            ctx.stroke();
+            ctx.drawImage(img,x,y,width,height);
+        }
+        //缓存画布绘制方法
+        function drawImageBC(img,x,y,width,height){
+            backBuf.clearRect(0,0,stage.width,stage.height);
+            backBuf.save();
+            backBuf.drawImage(img,x,y,width,height);
+            backBuf.restore();
+        }
+
+        //获取两个矩形相交区域
+        function getInRect(x1,y1,x2,y2,x3,y3,x4,y4) {
+            return [Math.max(x1,x3),Math.max(y1,y3),Math.min(x2,x4),Math.min(y2,y4)];
+        }
+
+
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            //根据地图数组碰撞将测
+            switch (e.keyCode) {
+                case 37:
+                    console.log("Left");
+                    if (penguinImg.x > 0) {
+                        penguinImg.x -= 2;
+                    }
+                    break;
+                case 38:
+                    console.log("Top");
+                    if (penguinImg.y > 0) {
+                        penguinImg.y -= 2;
+                    }
+                    break;
+                case 39:
+                    console.log("Right");
+                    if (penguinImg.x < stage.width) {
+                        penguinImg.x += 2;
+                    }
+                    break;
+                case 40:
+                    console.log("Bottom");
+                    if (penguinImg.y < stage.height) {
+                        penguinImg.y += 2;
+                    }
+                    break;
+
+                default:
+                    return false;
+            }
+        };
+        
+        stage.addEventListener('click', function (event) {
+            var x = event.clientX - stage.getBoundingClientRect().left;
+            var y = event.clientY - stage.getBoundingClientRect().top;
+            penguinImg.x = x;
+            penguinImg.y = y;
+        });
+
+
+        function update() {
+            ctx.clearRect(0, 0, 600, 600);
+            drawImageBox(giraffe,giraffeImg.x,giraffeImg.y,giraffeImg.r,giraffeImg.r);
+            drawImageBox(penguin,penguinImg.x,penguinImg.y,penguinImg.r,penguinImg.r);
+            document.querySelector('.hitTestBox').innerHTML = "否";
+            document.querySelector('.hitTestPixel').innerHTML = "否";
+            var rect = getInRect(giraffeImg.x,giraffeImg.y,giraffeImg.x+giraffeImg.r,giraffeImg.y+giraffeImg.r,penguinImg.x,penguinImg.y,penguinImg.x+penguinImg.r,penguinImg.y+penguinImg.r)
+
+            //如果没有相交则退出
+            if(rect[0]>=rect[2]||rect[1]>=rect[3]) {
+
+            } else{
+                document.querySelector('.hitTestBox').innerHTML = "是";
+                giraffeImg.data = null;
+                penguinImg.data = null;
+                //获取精灵在相交矩形像素数据
+                drawImageBC(giraffe,giraffeImg.x,giraffeImg.y,giraffeImg.r,giraffeImg.r);
+                giraffeImg.data = backBuf.getImageData(rect[0],rect[1],rect[2],rect[3]).data;
+                drawImageBC(penguin,penguinImg.x,penguinImg.y,penguinImg.r,penguinImg.r);
+                penguinImg.data = backBuf.getImageData(rect[0],rect[1],rect[2],rect[3]).data;
+                for(var i=3;i<giraffeImg.data.length;i+=4)
+                {
+                    if(giraffeImg.data[i]>0&&penguinImg.data[i]>0){
+                        document.querySelector('.hitTestPixel').innerHTML = "是";
+                    }
+                }
+
+            }
+            requestAnimationFrame(update);
+        }
+
+        update();
+    };
+</script>
+</html>

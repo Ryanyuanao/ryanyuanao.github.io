@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="UTF-8">
+    <title>盒包围碰撞算法-矩形</title>
+    <style>
+        #stage {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<h1>是否碰撞：<span class="hitTest">否</span></h1>
+<canvas id="stage"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var stage = document.querySelector('#stage'),
+            ctx = stage.getContext('2d');
+        stage.width = 400;
+        stage.height = 400;
+
+        //栅格线条
+        function drawGrid(context, color, stepx, stepy) {
+            context.strokeStyle = color;
+            context.lineWidth = 0.5;
+
+            for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
+                context.beginPath();
+                context.moveTo(i, 0);
+                context.lineTo(i, context.canvas.height);
+                context.stroke();
+            }
+            for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+                context.beginPath();
+                context.moveTo(0, i);
+                context.lineTo(context.canvas.width, i);
+                context.stroke();
+            }
+        }
+
+
+        var rect = {
+            x: stage.width / 2 - 20,
+            y: stage.height / 2 - 20,
+            r: 40,
+            c: "red"
+        }, rects = [];;
+        rects.push(rect);
+
+        for (var i = 0; i < 10; i++) {
+            var trace = {
+                x: 40 * i,
+                y: 40 * i,
+                r: 40,
+                c: "blue"
+            };
+            rects.push(trace);
+        }
+
+        function createRect(x, y, r, c) {
+            ctx.beginPath();
+            ctx.fillStyle = c;
+            ctx.rect(x, y, r, r);
+            ctx.fill();
+        }
+
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            //根据地图数组碰撞将测
+            switch (e.keyCode) {
+                case 37:
+                    console.log("Left");
+                    if (rects[0].x > 0) {
+                        rects[0].x -= 2;
+                    }
+                    break;
+                case 38:
+                    console.log("Top");
+                    if (rects[0].y > 0) {
+                        rects[0].y -= 2;
+                    }
+                    break;
+                case 39:
+                    console.log("Right");
+                    if (rects[0].x < stage.width) {
+                        rects[0].x += 2;
+                    }
+                    break;
+                case 40:
+                    console.log("Bottom");
+                    if (rects[0].y < stage.height) {
+                        rects[0].y += 2;
+                    }
+                    break;
+
+                default:
+                    return false;
+            }
+        };
+
+        stage.addEventListener('click', function (event) {
+            var x = event.clientX - stage.getBoundingClientRect().left;
+            var y = event.clientY - stage.getBoundingClientRect().top;
+            rects[0].x = x - rects[0].r/2;
+            rects[0].y = y - rects[0].r/2;
+        });
+
+        function hitTest(source, target) {
+            /* 源物体和目标物体都包含 x, y 以及 width, height */
+            return !(
+                ( ( source.y + source.r ) < ( target.y ) ) ||
+                ( source.y > ( target.y + target.r ) ) ||
+                ( ( source.x + source.r ) < target.x ) ||
+                ( source.x > ( target.x + target.r ) )
+            );
+        }
+
+        function update() {
+            ctx.globalAlpha = 1;
+            ctx.clearRect(0, 0, 400, 400);
+            drawGrid(ctx, 'lightgray', 40, 40);
+            document.querySelector('.hitTest').innerHTML = "否";
+            for (var i = 1, len = rects.length; i < len; i++) {
+                createRect(rects[i].x, rects[i].y, rects[i].r, rects[i].c);
+                var flag = hitTest(rects[0], rects[i]);
+                if (flag) {
+                    document.querySelector('.hitTest').innerHTML = "是";
+                    ctx.globalAlpha = 0.5;
+                }
+            }
+            createRect(rects[0].x, rects[0].y, rects[0].r, rects[0].c);
+            requestAnimationFrame(update);
+        }
+
+        update();
+    };
+</script>
+</html>
