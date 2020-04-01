@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+html,body{
+    width: 100%;
+    height: 200%;
+}
+#rocket{
+    width: 36px;
+    height: 65px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: none;
+    cursor: pointer;
+}
+#logo{
+    width: 210px;
+    height: 50px;
+    margin: 50px auto 0;
+}
+#header{
+    z-index: 2;
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    padding-left: 360px;
+}
+#header #box{
+    width: 900px;
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+}
+#leftPic{
+    display: none;
+    width: 105px;
+    height: 25px;
+    position: relative;
+    left: -120px;
+    top: 25px;
+}
+#leftPic img{
+    width: 100%;
+    height: 100%;
+}
+#header input[type=text]{
+    font-size: 20px;
+    display: inline-block;
+    width: 500px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#header button{
+    font-size: 12px;
+    width: 70px;
+    height: 30px;
+    color: grey;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#header input[type=text]:focus{
+    border: 1px solid red;
+}
+#content{
+    width: 100%;
+    height: 1500px;
+    text-align: center;
+    position: absolute;
+    top: 200px;
+}
+#content #nav span{
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    font-size: 26px;
+}
+#content span:hover{
+    cursor: pointer;
+}
+#content #nav .cur{
+    color: red;
+    border: 1px solid #ccc;
+    border-bottom: none;
+}
+#content #finish_task{
+    display: none;
+}
+#content #task,#content #finish_task{
+    width: 50%;
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    position: absolute;
+    top: 50px;
+    left: 25%;
+}
+#content #task li,#content #finish_task li{
+    padding-left: 10px;
+    padding-right: 5px;
+    overflow: hidden;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+#content #task li  #title,#content #task li input[type=checkbox],#content #finish_task li  #title,#content #finish_task li input[type=checkbox]{
+    float: left;
+}
+#task li input[type=checkbox],#finish_task li input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    top: 16px;
+    margin-right: 10px;
+}
+#content #task li  #title,#content #finish_task li  #title{
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+}
+#content #task li #details,#content #task li #del,#content #finish_task li #details,#content #finish_task li #del {
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    float: right;
+}
+#content #task li #del,#content #finish_task li #del{
+    margin-right: 20px;
+}
+#someContent{
+    background: wheat;
+    width: 500px;
+    border: 1px solid #CCCCCC;;
+    display: none;
+    height: 250px;
+
+}
+
+#conTitle{
+    font-size: 20px;
+    text-align: center;
+    margin: 20px auto 0;
+}
+#someContent textarea{
+    margin-left: 90px;
+    margin-top: 15px;
+    width: 300px;
+    height: 100px;
+    border: 1px solid #000;
+    font-size: 20px;
+    color: black;
+    font-family: '微软雅黑';
+}
+#someContent #time{
+    font-family: '微软雅黑';
+    width: 300px;
+    font-size: 20px;
+    color: black;
+    height: 25px;
+    display: inline-block;
+    border: 1px solid #000;
+    margin-left: 90px;
+    margin-top: 15px;
+}
+#someContent #close{
+    cursor: pointer;
+    position: absolute;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    right: 10px;
+    top: 20px;
+}
+#someContent #oSpan{
+    position: absolute;
+    font-size: 20px;
+    width: 80px;
+    left: 50%;
+    bottom: 0px;
+    margin-left: -40px;
+    color: red;
+    height: 30px;
+    display: none;
+}
+#someContent button{
+    cursor: pointer;
+    position: absolute;
+    width: 70px;
+    height: 25px;
+    background: red;
+    color: white;
+    right: 10px;
+    bottom: 40px;
+}
+
+video{
+    display: none;
+}
