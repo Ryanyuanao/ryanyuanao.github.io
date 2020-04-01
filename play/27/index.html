@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>jQuery纸牌消消看小游戏 - 源码之家</title>
+  <script src="jquery.min.js"></script>
+  <style type="text/css">
+   .pai{color:#000000;display:inline-block;width:25px;height:50px;border:1px #000 solid;font:16px "arial","times new roman";cursor:default;background-color:#fff;text-align:center;-webkit-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none;}
+   [dui]{background-color:#eee;pointer-events:none;}
+   table td{padding:0;}
+   body{font:20px "Scerh","开心软件少儿简体","方正少儿简体","方正少儿_gbk","微软雅黑","宋体",sans-serif}
+  </style>
+ </head>
+ <body style="text-align:center;">
+  <h1 style="font-size:50px;margin:15px 0;">纸牌消消看</h1>
+  <table class="dessd" align="center">
+   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  分数：<span class="score">0</span><br><span class="txdd"></span>
+  <script type="text/javascript">
+   function feef(){
+	var a=Math.floor(Math.random()*4)
+	var b=Math.floor(Math.random()*13)
+    var deds="♠♥♣♦"
+	var str=["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
+	return "<span class='pai' pai='"+(b+1)+"' style='"+(a%2==1?"color:#f00":"")+"' onclick=\"pais("+(b+1)+",this)\">"+str[b]+"<br>"+deds.substr(a,1)+"</span>"
+   }
+   var lengthsrr=$(".dessd td").length
+   for(i=0;i<lengthsrr;i++){
+    $(".dessd td").eq(i).html(feef())
+   }
+   var score=0
+   var paisa="-"
+   var paisb="-"
+   $.fn.toggleAttr=function(a,b){
+    if($(this).attr(a)==undefined){$(this).attr(a,b)}else{$(this).removeAttr(a)}
+   }
+   function pais(k,l){
+	$(l).toggleAttr("dui","")
+    if(paisa=="-"){
+	 paisa=k
+	}else if(paisb=="-"){
+	 paisb=k
+     if(paisa==paisb){
+	  if($(l).attr("dui")!=undefined){score++;}
+	  $(".score").html(score);$("[dui]").fadeOut(500,function(){$(this).remove();abeer()});
+	 }else{
+	  $("[dui]").removeAttr("dui")
+	 }
+     paisa="-",paisb="-"
+	}
+   }
+   function abeer(){
+	var dr=Math.max($("[pai='1']").length,a2=$("[pai='2']").length,a3=$("[pai='3']").length,a4=$("[pai='4']").length,a5=$("[pai='5']").length,a6=$("[pai='6']").length,a7=$("[pai='7']").length,a8=$("[pai='8']").length,a9=$("[pai='9']").length,a10=$("[pai='10']").length,a11=$("[pai='11']").length,a12=$("[pai='12']").length,a13=$("[pai='13']").length)
+    if(dr==0||dr==1){
+	 $(".txdd").html("牌数不够，自动刷新");
+	 setTimeout(function(){for(i=0;i<lengthsrr;i++){$(".dessd td").eq(i).html(feef())};$(".txdd").html("");},1000) //牌数过低自动刷新
+	}
+   }
+  </script>
+<div style="text-align:center;">
+<p>更多源码：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+
+</body>
+</html>
