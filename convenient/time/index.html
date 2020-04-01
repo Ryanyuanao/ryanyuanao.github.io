@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery LED显示效果倒计时代码 - 源码之家</title>
+
+<!--可无视-->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var date_str = "";
+	for (var i = 0; i <= 23; i++) {
+		var d_;
+		i < 10 ? d_ = "0" + i : d_ = i;
+		date_str = date_str + "<option>" + d_ + "</option><br/>"
+	}
+	$("#_minute").append(date_str);
+	var time_str = "";
+	for (var i = 0; i <= 59; i++) {
+		var t_;
+		i < 10 ? t_ = "0" + i : t_ = i;
+		time_str = time_str + "<option>" + t_ + "</option><br/>"
+	}
+	$("#_second").append(time_str);
+});
+$(document).ready(function() {
+	$("#start_").click(function() {
+		var m_ = $("#_minute").val();
+		var s_ = $("#_second").val();
+		seconds_ = m_ * 60 + s_ * 1;
+	});
+	$("#reset_").click(function() {
+		$("#_minute").val("00");
+		$("#_second").val("00");
+		seconds_ = 0;
+		clearInterval(timer);
+	});
+});
+</script>
+
+</head>
+
+<body>
+<form role="form">
+	<div class="form-group">
+		<div style="display: inline-block;margin-top: 50px;margin-left: 500px;">
+			<div style="display: inline-block;">
+				<select class="form-control" id="_minute" style="width:100px">
+			</select>
+			</div>
+			&nbsp;<span style="color:white">分</span>
+			<div style="display: inline-block;">
+				<select class="form-control" id="_second" style="width:100px">
+			</select>
+			</div>
+			&nbsp;<span style="color:white">秒</span> </div>
+		<div style="display: inline-block;">
+			<button class="btn btn-success" type="button" id="start_">Start</button>
+			<button class="btn btn-danger" type="button" id="reset_">Reset</button>
+		</div>
+	</div>
+	<div class="time">
+		<div class="digit minutes">
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+		</div>
+		<div class="digit minutes">
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+		</div>
+		<div class="separator"></div>
+		<div class="digit seconds">
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+		</div>
+		<div class="digit seconds">
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+			<div class="segment"></div>
+		</div>
+	</div>
+</form>
+
+<script src="js/countdown.js" type="text/javascript"></script>
+<div style="text-align:center;">
+<p>更多源码：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+</body>
+</html>
