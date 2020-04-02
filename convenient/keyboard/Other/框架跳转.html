@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if IE 6 ]> <html class="ne_ua_ie6 ne_ua_ielte8" id="ne_wrap"> <![endif]-->
+<!--[if IE 7 ]> <html class="ne_ua_ie7 ne_ua_ielte8" id="ne_wrap"> <![endif]-->
+<!--[if IE 8 ]> <html class="ne_ua_ie8 ne_ua_ielte8" id="ne_wrap"> <![endif]-->
+<!--[if IE 9 ]> <html class="ne_ua_ie9" id="ne_wrap"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--> <html> <!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="guolibo.com">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="copyright" content="Copyright (c) 2080 guolibo.com. All rights reserved.">
+<meta name="keywords" content="键盘导航,,键盘导航首页，网站首页,网址首页，键盘导航">
+<meta name="description" content=" 键盘导航">
+<title>键盘导航 | 简单首页</title>
+<meta id="mymeta">
+<script type="text/javascript">
+    var matchStr =window.location.href;
+    var reURL = /^(https):\/\/.+$/;
+    if(!reURL.test(matchStr)){
+        window.location.href = "//www.guolibo.com/";
+    }
+</script>
+    </head>
+    <script type="text/javascript">
+        var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+        var browser = navigator.userAgent.toLowerCase();
+        var isMobile = false;
+        for (var i=0; i<mobileAgent.length; i++)
+        {
+            if (browser.indexOf(mobileAgent[i])!=-1)
+            {
+                isMobile = true;
+                mymeta.name = "viewport";
+                mymeta.content = "width=device-width, initial-scale=1, maximum-scale=1";
+                break;
+            }
+        }
+    </script>
+    <frameset cols="0,*" frameborder="NO" border="0" framespacing="0">
+        <frame src="about:blank" scrolling="NO" noresize />
+        <frame src="判断来路域名跳转.html">
+    </frameset>
+    <noframes></noframes>
+</html>
