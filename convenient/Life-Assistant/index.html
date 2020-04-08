@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>Life Assistant</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="all-container">
+        <div id="header">
+            <h1>Welcome to Life Assistant</h1>
+            <h2>------Your good assistant when you want to go out.</h2>
+            <form id="form-container" class="form-container">
+
+                <select id="type">
+                <option value="">请选择搜索类型</option>   
+                <option value="地名地址信息">地名</option>       
+                <option value="风景名胜">风景名胜</option>
+                <option value="餐饮服务">餐饮</option>
+                <option value="购物服务">购物</option>
+                <option value="生活服务">生活服务</option>
+                <option value="住宿服务">住宿</option>
+                <option value="科教文化服务">科教文化</option>
+                </select>
+                <input type="text" id="address" placeholder="Ex:北京天安门OR北京|火锅">
+                <button id="submit-btn">GO</button>
+            </form>
+        </div>
+        <h2 id="greeting" class="greeting">Where do you want to go?</h2>
+        <div id="map-container">
+            <h3 class="map-header">If you want to know its location on the map,Type in an address above.</h3>
+            <div id="onemap"></div>
+        </div>
+        <div id="wikipedia-container">
+            <div id="route-header">
+                <button id="clear-route">Clear</button>
+                <h3 id="wikipedia-header">Route Query</h3>
+            </div>
+            <hr>
+            <div>
+                <span class="text"> Mode </span>
+                <select id="mode">
+                    <option value="">Option</option>
+                    <option value="Walking">Walking</option>
+                    <option value="Driving">Driving</option>
+                    <option value="Riding">Riding</option>
+                    <option value="Transfer">Transfer</option>
+                </select>
+                <input id="route" type="button" value="GO">
+                <input id="origin-city" type="text" placeholder="city">
+                <input id="origin" type="text" placeholder="Origin address">
+                <input id="end-city" type="text" placeholder="city">
+                <input id="end" type="text" placeholder="End address">
+            </div>
+            <div id="route-container"></div>
+        </div>
+
+
+        <div id="nytimes-container">
+            <div id="search-header">
+                <h3 id="search-header">Search results about</h3>
+                <button id="search-clear">Clear</button>
+            </div>
+            <div id="search-container"></div>
+        </div>
+        <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=9e8726a8fc3048f7e0cf3c66c630880d&callback=init"
+            async defer></script>
+        <script>
+            function init() {
+                var map;
+                var placeSearch;
+                var transfer;
+                var walking;
+                var driving;
+                var riding;
+                var searchs = document.getElementById('submit-btn');
+                var inputPosition = document.getElementById('address');
+                var selectType = document.getElementById('type');
+                var findRoute = document.getElementById('route');
+                var modeType = document.getElementById('mode');
+                var origin = document.getElementById('origin');
+                var originCity = document.getElementById('origin-city');
+                var end = document.getElementById('end');
+                var endCity = document.getElementById('end-city');
+                var clearRoute = document.getElementById('clear-route');
+                var clearSearch = document.getElementById('search-clear');
+                map = new AMap.Map('onemap', {
+                    zoom: 10,
+                    //center: [116.39, 39.9]缺省时会初始化为用户所在的城市
+                });
+                map.plugin(["AMap.ToolBar"], function () {
+                    map.addControl(new AMap.ToolBar());
+                });
+                AMap.plugin('AMap.Autocomplete', function () {//回调函数
+                    //实例化Autocomplete
+                    var autoOptions = {
+                        city: "", //城市，默认全国
+                        input: "address"//使用联想输入的input的id
+                    };
+                    autocomplete = new AMap.Autocomplete(autoOptions);
+                    //TODO: 使用autocomplete对象调用相关功能
+                });
+                AMap.service('AMap.PlaceSearch', function () {//回调函数
+                    //实例化PlaceSearch 
+                    placeSearch = new AMap.PlaceSearch({
+                        //TODO: 使用placeSearch对象调用关键字搜索的功能
+                        pageSize: 15,
+                        pageIndex: 1,
+                        type: "",
+                        map: map,
+                        panel: "search-container"
+                    });
+
+                });
+                AMap.service('AMap.Transfer', function () {//回调函数
+                    //实例化Transfer
+                    transfer = new AMap.Transfer({
+                        map: map,
+                        city: '北京市',
+                        panel: 'route-container',
+                        policy: AMap.TransferPolicy.LEAST_TIME //乘车策略 
+                    });
+                    //TODO: 使用transfer对象调用公交换乘相关的功能
+                })
+                AMap.service('AMap.Walking', function () {//回调函数
+                    //实例化Walking
+                    walking = new AMap.Walking({
+                        map: map,
+                        panel: "route-container"
+                    });
+                    //TODO: 使用walking对象调用步行路径规划相关的功能
+                });
+                AMap.service('AMap.Driving', function () {//回调函数
+                    //实例化Driving
+                    driving = new AMap.Driving({
+                        map: map,
+                        panel: "route-container"
+                    });
+                    //TODO: 使用driving对象调用驾车路径规划相关的功能
+                });
+                AMap.service('AMap.Riding', function () {//回调函数
+                    //实例化Driving
+                    riding = new AMap.Riding({
+                        map: map,
+                        panel: "route-container"
+                    });
+                    //TODO: 使用driving对象调用驾车路径规划相关的功能
+                });
+                searchs.addEventListener('click', function () {
+
+                    placeSearch.clear();
+                    placeSearch.setType(selectType.value);
+                    placeSearch.setPageIndex(1);
+                    //关键字查询
+                    placeSearch.search(inputPosition.value);
+                });
+                findRoute.addEventListener('click', function () {
+                    walking.clear();
+                    driving.clear();
+                    riding.clear();
+                    transfer.clear();
+                    if (modeType.value == '') {
+                        window.alert('You must choose a option in the Route Query.');
+                    } else {
+                        if (modeType.value == 'Walking') {
+                            walking.search([
+                                { keyword: origin.value, city: originCity.value },
+                                { keyword: end.value, city: endCity.value }
+                            ]);
+                        }
+                        else {
+                            if (modeType.value == 'Driving') {
+                                driving.search([
+                                    { keyword: origin.value, city: originCity.value },
+                                    { keyword: end.value, city: endCity.value }
+                                ]);
+                            }
+                            else {
+                                if (modeType.value == 'Riding') {
+                                    riding.search([
+                                        { keyword: origin.value, city: originCity.value },
+                                        { keyword: end.value, city: endCity.value }
+                                    ]);
+                                }
+                                else {
+                                    transfer.search([
+                                        { keyword: origin.value, city: originCity.value },
+                                        { keyword: end.value, city: endCity.value }
+                                    ]);
+                                }
+                            }
+                        }
+                    }
+                });
+                clearRoute.addEventListener('click', function () {
+                    walking.clear();
+                    driving.clear();
+                    riding.clear();
+                    transfer.clear();
+                });
+                clearSearch.addEventListener('click', function () {
+                    placeSearch.clear();
+                });
+            }
+        </script>
+
+        <div id="footer">
+            <p id="footer-links">
+                <a href="#header">Top</a> <a href="#map-container">Map</a> <a href="#wikipedia-container">Route Query</a>
+                <a href="#nytimes-container">Search results</a> <a href="">Contact Us</a>
+                <p>
+                    <p>
+                        &copy; 2017 <a href="https://luanting.github.io/">Luan Ting</a>. All rights reserved.</p>
+        </div>
+    </div>
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

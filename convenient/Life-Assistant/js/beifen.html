@@ -1,0 +1,22 @@
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=9e8726a8fc3048f7e0cf3c66c630880d&callback=init"
+                async defer></script>
+            <script>
+                function init() {
+                    var map = new AMap.Map('onemap', {
+                        zoom: 10,
+                        center: [116.39, 39.9]
+                    });
+                    map.plugin(["AMap.ToolBar"], function () {
+                        map.addControl(new AMap.ToolBar());
+                    });
+                   AMap.plugin('AMap.Autocomplete',function(){//回调函数
+    //实例化Autocomplete
+    var autoOptions = {
+        city: "", //城市，默认全国
+        input:"address"//使用联想输入的input的id
+    };
+    autocomplete= new AMap.Autocomplete(autoOptions);
+    //TODO: 使用autocomplete对象调用相关功能
+}) 
+                }
+            </script>
