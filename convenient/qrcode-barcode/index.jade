@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    title qrcode & barcode
+    link(rel="stylesheet", href="./css/bootstrap.min.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+body
+    .container
+        .page-header
+            h1 生成二维码和条形码
+    .container
+        form.form-horizontal
+            .form-group
+                label.control-label.col-md-2(for="con-input")   输入需要转换的内容：
+                .col-md-10
+                    input.form-control#con-input(type="text")
+            .form-group          
+                .col-md-offset-2.col-md-10
+                    button.btn.btn-default(type="button") 确定转换
+                    
+    .container
+        .rows
+            .col-md-4
+                h4 二维码：
+            .col-md-3
+                #qrcode
+    br              
+    .container             
+        .rows
+            .col-md-4
+                h4 条形码：
+            .col-md-3
+                #barcode          
+                  
+    script(src="./js/jquery-2.1.4.min.js")    
+    script(src="./js/jquery-barcode.js")    
+    script(src="./js/jquery.qrcode.min.js")   
+    script(src="main.js") 
+    
+    
