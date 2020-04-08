@@ -25,8 +25,8 @@
                 <option value="住宿服务">住宿</option>
                 <option value="科教文化服务">科教文化</option>
                 </select>
-                <input type="text" id="address" placeholder="Ex:北京天安门OR北京|火锅">
-                <button id="submit-btn">GO</button>
+                <input type="text" id="address" placeholder="例如:北京天安门OR北京|火锅">
+                <button id="submit-btn">走</button>
             </form>
         </div>
         <h2 id="greeting" class="greeting">你问对方要去哪个地方？</h2>
@@ -37,23 +37,23 @@
         <div id="wikipedia-container">
             <div id="route-header">
                 <button id="clear-route">Clear</button>
-                <h3 id="wikipedia-header">Route Query</h3>
+                <h3 id="wikipedia-header">路线查询</h3>
             </div>
             <hr>
             <div>
                 <span class="text"> Mode </span>
-                <select id="mode">
-                    <option value="">Option</option>
-                    <option value="Walking">Walking</option>
-                    <option value="Driving">Driving</option>
-                    <option value="Riding">Riding</option>
-                    <option value="Transfer">Transfer</option>
+                <select id="方式">
+                    <option value="">选择</option>
+                    <option value="步行">Walking</option>
+                    <option value="驾驶">Driving</option>
+                    <option value="骑马">Riding</option>
+                    <option value="换乘">Transfer</option>
                 </select>
-                <input id="route" type="button" value="GO">
-                <input id="origin-city" type="text" placeholder="city">
-                <input id="origin" type="text" placeholder="Origin address">
-                <input id="end-city" type="text" placeholder="city">
-                <input id="end" type="text" placeholder="End address">
+                <input id="route" type="button" value="走">
+                <input id="origin-city" type="text" placeholder="城市">
+                <input id="origin" type="text" placeholder="起始地址">
+                <input id="end-city" type="text" placeholder="城市">
+                <input id="end" type="text" placeholder="结束地址">
             </div>
             <div id="route-container"></div>
         </div>
@@ -163,7 +163,7 @@
                     riding.clear();
                     transfer.clear();
                     if (modeType.value == '') {
-                        window.alert('You must choose a option in the Route Query.');
+                        window.alert('必须在路由查询中选择一个选项。');
                     } else {
                         if (modeType.value == 'Walking') {
                             walking.search([
