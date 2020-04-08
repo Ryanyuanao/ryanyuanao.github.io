@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>闲聊机器人</title>
+<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	html,body{
+		width: 100%;
+		height: 100%;
+	}
+	body{
+		background: url('img/bg.png') no-repeat center;
+		background-size: 100%;
+	}
+	#title{
+		width: 100%;
+		height: 80px;
+		background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+		font-size:24px;
+		color: #fff;
+		text-align:center;
+		line-height: 80px;
+	}
+	
+	.center{
+		width: 800px;
+		height: 680px;
+		margin:100px auto;
+		background-color: rgba(255,255,255,.2); 
+	}
+	
+	.center .c_h{
+		width: 100%;
+		height: 10%;
+		/* background: linear-gradient(-45deg,#f00,blue,yellow); */
+		background:#2196f3;
+		opacity: 0.5;
+		background-image: linear-gradient(-80deg, #84fab0, #8fd3f4); 
+	}
+	
+	.center .c_h span{
+		display:block;
+		width:83px;
+		height:67px;
+		background: url("img/logo.png") no-repeat; 
+		background-size:83px 67px;
+		float: left;
+	}
+	.center .c_h p{
+		font-size:25px;
+		float: left;
+		color:#fff;
+		margin-left:50px;
+	}
+	
+	 /*滚动条样式*/
+       .center .c_c::-webkit-scrollbar {
+           width: 4px;    
+           /*height: 4px;*/
+       }
+       .center .c_c::-webkit-scrollbar-thumb {
+           border-radius: 10px;
+           -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+           background: rgba(0,0,0,0.2);
+       }
+       .center .c_c::-webkit-scrollbar-track {
+           -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+           border-radius: 0;
+           background: rgba(0,0,0,0.1);
+
+       }
+	 /*滚动条样式*/
+	
+	.center .c_c{
+		width: 97%;
+		height: 74%;
+		padding:10px;
+		overflow: auto;
+	}
+	
+	.center .c_c .rot{
+		width: 100%;
+		overflow: hidden;
+		margin-bottom: 5px;
+	}
+	.center .c_c .rot span{
+		display:block;
+		width:50px;
+		height:50px;
+		background: url("img/rot.png") no-repeat; 
+		background-size:50px 50px;
+		float: left;
+	}
+	.center .c_c .rot p{
+		margin-top: 10px;
+		max-width:250px;
+		float: left;
+		padding:10px;
+		background: rgba(0,0,255,0.5);
+		border-radius: 10px;
+		margin-left:10px;
+		font-size: 15px;
+	}
+	
+	.center .c_c .me{
+		width: 100%;
+		overflow: hidden;
+	}
+	.center .c_c .me span{
+		display:block;
+		width:50px;
+		height:50px;
+		background: url("img/me.png") no-repeat; 
+		background-size:50px 50px;
+		float: right;
+	}
+	.center .c_c .me p{
+		margin-top: 10px;
+		max-width:250px;
+		float: right;
+		padding:10px;
+		background: #19b599;
+		border-radius: 10px;
+		margin-right:10px;
+		font-size: 15px;
+	} 
+	
+	
+	
+	.center .c_f{
+		width: 100%;
+		height: 15%;
+	}
+	
+	#text{
+		width:75%;
+		height:60%;
+		outline: none;
+		text-indent: 50px;
+		font-size: 20px;
+		border:none;
+		color:#fff;
+		background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+		border-radius:5%;
+		margin-top:3%;
+		margin-left:1%;
+	}
+	#btn{
+		width:20%;
+		height:55%;
+		margin-left:2%;
+		border-radius:5%;
+		outline: none;
+		background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+		border:none;
+	}
+</style>
+</head>
+<body>
+<!-- 自己去天行数据创建一个机器人的API丢到$.get的key那   -->
+	<!-- 头部 -->
+	<div id="title">你好呀</div>
+	<!-- 头部结束 -->
+	
+	<!-- 聊天框 -->
+	<div class="center">
+		<!-- 聊天框顶部 -->
+		<div class="c_h">
+			<span></span>
+			<p>陪聊机器人</p>
+		</div>
+		<!-- 结束聊天框顶部 -->
+		
+		<!-- 聊天显示模块 -->
+		<div class="c_c">
+			<div class="rot">
+				<span></span>
+				<p>你好呀。</p>
+			</div>
+			
+			<!-- <div class="me">
+				<span></span>
+				<p>不啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵啵</p>
+			</div> -->
+		</div>
+		<!-- 结束聊天显示模块 -->
+		
+		<!-- 文本框和按钮 -->
+		<div class="c_f">
+			<input type="text" placeholder="请输入内容(每次最多输入25个字)" autocomplete="off" id="text" maxlength="25" />
+			<input type="button" id="btn" value="发送" />
+		</div>
+		<!-- 结束文本框和按钮 -->
+		
+	</div>
+	<!-- 结束聊天框 -->
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	//点击发送
+	$("#btn").click(function(){
+		var text = $("#text").val();
+		if (text != "" && text != null && text.length != 0 && text != undefined) {
+			var me ="<div class='me'><span></span><p>"+text+"</p></div>";
+			$(".c_c").append(me);
+			$("#text").val("");
+			$("#text").focus();
+			//一直滚动
+			$(".c_c").scrollTop(999);
+			/* $.ajax({
+				url:"bot",
+				type:"post",
+				data:{"text":text},
+				success:function(result){
+					console.log(result);
+					var json = $.parseJSON(result);
+					
+				}
+			}); */
+			    $.get("https://api.tianapi.com/txapi/robot/index?key=1aab447a6be202ff7c8b22e0c8c2ce3f&question="+text,
+			    function(data,status){
+					$('#result').append(JSON.stringify(data));
+			        console.log("状态码：" + data.code + "\n消息：" + data.msg + "\n请求：" + data.newslist[0].reply);
+			        var obj ="<div class='rot'><span></span><p>"+data.newslist[0].reply+"</p></div>";
+					$(".c_c").append(obj);
+					$(".c_c").scrollTop(999);
+			    });
+			
+			
+		}else{
+			return;
+		}
+	});
+	//回车输入
+    $(document).keydown(function(event){
+        if(event.which === 13) { 
+        	$("#btn").click();
+         }
+    })
+</script>
+</body>
+</html>
