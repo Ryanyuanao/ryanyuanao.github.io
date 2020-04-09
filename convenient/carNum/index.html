@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>车牌号查询城市</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>-->
+    <script src="js/carB.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/layer.js"></script>
+</head>
+<style>
+    .loading {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: #fff;
+        z-index: 22;
+    }
+    .loading span {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top:0;
+        right: 0;
+        bottom: 0;
+        width: 400px;
+        height: 300px;
+        margin: auto;
+        background: url("img/loading.gif");
+    }
+</style>
+<body style="
+    background: linear-gradient(to bottom, crimson, blue);
+    background: -webkit-linear-gradient(to bottom, crimson, blue);
+    background: -moz-linear-gradient(to bottom, crimson, blue);
+     opacity:1;height: 100%; min-height: 100%;">
+    <div class="loading">
+        <span></span>
+    </div>
+    <!--<input type="text" value="" style="text-transform: uppercase;">-->
+    <!--<span style="display: inline-block;" class="select">查询</span>-->
+    <h4 style="text-align: center; padding-top: 15%; margin: 0; color: #fff;">龙龙   车牌号归属地查询</h4>
+    <div class="input-group" style="margin: 10% 20% 0 20%;">
+        <input type="text" class="form-control"max="2" min="0" maxlength="4" type="number" placeholder="请输入车牌" style="text-transform: uppercase;">
+        <span class="input-group-btn">
+            <button class="btn btn-default select" type="button">查询</button>
+          </span>
+    </div>
+
+</body>
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState==="complete"){
+            $(".loading").fadeOut();
+        }
+
+    };
+    var sHeight = $(document).height();
+    $("body").height(sHeight);
+    $(".select").on("click",function () {
+//        layer.msg("dd");
+        var inputNum = $("input").val().toUpperCase();
+        console.log(inputNum)
+//        alert("您查的是"+"错误的"+"的车牌号");
+        if(inputNum===""){
+//            layer.msg("您输入的验证码错误！");
+            layer.open({
+                content: '你没输入车牌号，跟龙龙闹玩呢'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+                ,style:'top:0;'
+            });
+//            alert("你没输入车牌号，跟龙龙闹玩呢");
+            return false;
+        }
+//        for(var item in carNum){
+//            if(item==key){  //item 表示Json串中的属性，如'name'
+//                var jValue=carNum[item];//key所对应的value
+//                alert(jValue);
+//            }
+//        }
+        $.each(carNum,function (index,item) {
+            var length = carNum.length;
+//            console.log(index)
+//            switch (n){
+//                case(item.code==inputNum):
+//                    alert("您查的是"+$(this)[0].province+"省"+$(this)[0].city+"市的车")
+//            }
+            if(item.code===inputNum){
+                layer.open({
+                    content: "您查的是"+$(this)[0].province+"省"+$(this)[0].city+"市的车"
+                    ,skin: 'msg'
+                    ,time: 2 //2秒后自动关闭
+                    ,style:'top:0;'
+                });
+//                alert("您查的是"+$(this)[0].province+"省"+$(this)[0].city+"市的车");
+                return false;
+
+            }else{
+                if(length-1===index){
+                    layer.open({
+                        content: "您查的是错误的的车牌号"+"-----"+"例子：城市简称：冀+B"
+                        ,skin: 'msg'
+                        ,time: 2 //2秒后自动关闭
+                        ,style:'top:0;'
+                    });
+//                    alert("您查的是错误的的车牌号"+"-----"+"例子：城市简称：冀+B");
+                }
+            }
+//            else {
+//                alert("您查的是错误的的车牌号"+"-----"+"例子：城市简称：冀+B");
+//            }
+//            else if(item.code!==inputNum){
+////                alert(item.code)
+//                alert("您查的是错误的的车牌号"+"-----"+"例子：城市简称：冀+B");
+//                return false;
+//            }
+//            function DD() {
+//                if(item.code.indexOf(inputNum)===-1) {
+//                    alert("您查的是"+"错误的"+"的车牌号");
+//                    return false;
+//                }            }
+//            setTimeout(DD, 200);
+//        console.log(item.code)
+//        console.log(item.city)
+//        console.log($(this)[0].city)
+        })
+
+    })
+
+</script>
+<script>
+
+</script>
+</html>
