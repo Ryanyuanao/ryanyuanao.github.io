@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="闹钟网,在线闹钟,电脑闹钟,北京时间,闹钟软件,整点报时" />
+<meta name="description" content="闹钟网，实现在线网页闹钟功能，打开即用。附带整点报时、北京时间、经典铃音、一键快速设置等特色功能。" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<title>闹钟网-在线电脑闹钟</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<script src="style/js.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top">
+<div id="logo"><img src="style/logo.jpg" width="149" height="103" alt="闹钟网 - 在线闹钟" /></div>
+<div id="top_gg"><div id="ggwz___1"><!-- 广告位置1 --></div></div>
+</div>
+<div id="kuan"><div class="apDiv">
+  <div id="apDiv1">
+<table width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td width="60%" align="center"><label><input type="radio" name="sysjsz" id="naobiao_html_syfwqsj" value="0" checked="checked" style="vertical-align:middle" /> 北京时间</label> <label><input type="radio" name="sysjsz" id="naobiao_html_sybdsj" value="0" style="vertical-align:middle" /> 电脑时间</label></td>
+    <td width="20%" align="right"><label id="naobiao_html_zdbs_wz"><input type="checkbox" id="naobiao_html_zdbs" onchange="HL.Cookie.Set('naobiao_html_zdbs',this.checked,604800,'/');naobiao_html_zdbs_function(this.checked);" style="vertical-align:middle" />整点报时</label></td>
+  </tr>
+</table>
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td id="shijian_xianshi" style="font-size:70px;letter-spacing: 10px;font-family: Arial, Helvetica, sans-serif;">00:00:00</td>
+  </tr>
+</table>
+</div>
+  <div id="apDiv2">
+<table width="414" border="0" align="center" cellpadding="2" cellspacing="2">
+  <!-- ************************************************************ -->
+  <tr>
+    <td width="60">响铃时间：</td>
+    <td>
+	<script type="text/javascript">tyy(0, 23, "nz_shi", "闹钟 时");</script><span style="float:left;width:7px;text-align: center;">:</span><script type="text/javascript">tyy(0, 59, "nz_fen", "闹钟 分");</script><span style="float:left;width:7px;text-align: center;">:</span><script type="text/javascript">tyy(0, 59, "nz_miao", "闹钟 秒");</script>
+	<input type="text" id="tishi_wenzi" style="margin-left: 10px;width:180px;float:left;" maxlength="20" value="注意！时间到了！" title="可在这里添加或修改备注" class="all_srk_1" onBlur="this.className='all_srk_1';" onFocus="this.className='all_srk_0';" onchange="HL.Cookie.Set('naobiao_tishi_wenzi',this.value,604800,'/');" />
+	</td>
+  </tr>
+  <!-- ************************************************************ -->
+  <tr>
+    <td>快速设置：</td>
+    <td>
+	<input type="button" id="kssz_jia_1" class="all_an_1" value="+1" title="加1分钟" onclick="nz_tianjiashijian(60);" />
+	<input type="button" id="kssz_jia_5" class="all_an_1" value="+5" title="加5分钟" onclick="nz_tianjiashijian(300);" />
+	<input type="button" id="kssz_jia_30" class="all_an_1" value="+30" title="加30分钟" onclick="nz_tianjiashijian(1800);" />
+	<input type="button" id="kssz_jian_1" class="all_an_1" value="-1" title="减1分钟" onclick="nz_tianjiashijian(-60);" />
+	<input type="button" id="kssz_jian_5" class="all_an_1" value="-5" title="减5分钟" onclick="nz_tianjiashijian(-300);" />
+	<input type="button" id="kssz_jian_30" class="all_an_1" value="-30" title="减30分钟" onclick="nz_tianjiashijian(-1800);" />
+	<span style="margin-left:5px;" id="tishi_shengyu">剩余时间</span>
+	</td>
+  </tr>
+  <!-- ************************************************************ -->
+  <tr>
+    <td>提示铃声：<!-- 显示响铃播放 --><div id="xlbf"></div></td>
+    <td>
+	<select id="xlbfxz" onchange="HL.Cookie.Set('naobiao_xlbfxz',this.value,604800,'/');xuanzelingsheng();" class="all_xl_1" style="margin-right: 5px;">
+	<option value="jing_bao_ji_jiao">[劲爆] 劲爆鸡叫</option>
+	<option value="wo_de_di_pan">[劲爆] 我的地盘</option>
+	<option value="di_yin_chao_zhen_han">[劲爆] 低音超震撼</option>
+	<option value="jing_dian_wu_qu">[劲爆] 经典舞曲</option>
+	<option value="ai_yao_tan_dang_dang">[欢快] 爱要坦荡荡</option>
+	<option value="chu_dian">[欢快] 触电</option>
+	<option value="zi_you_zhi_di">[清新] 自由之地</option>
+	<option value="wo_zai_na_yi_jiao_luo_huan_guo_shang_feng">[清新] 我在那一角落患过伤风</option>
+	<option value="la_la_la">[清新] 啦拉拉</option>
+	<option value="zuo_zai_xiang_kou_de_na_dui_nan_nv">[清新] 坐在巷口的那对男女</option>
+	<option value="ka_nong_meng_huan">[舒缓] 卡农梦幻</option>
+	<option value="mei_ren_yu_zhi_ge">[舒缓] 美人鱼之歌</option>
+	<option value="qing_cui_shui_jing_niao_jiao">[舒缓] 清脆水晶鸟叫闹铃</option>
+	<option value="yong_you_quan_shi_jie">[其它] 拥有全世界</option>
+	<option value="ai_hen_jiao_zhi">[其它] 爱恨交织</option>
+	<option value="gu_zhu_yi_zhi">[其它] 孤注一掷</option>
+	<option value="shi_wo">[其它] 是我</option>
+	<option value="wo_xiang_de_dao_ni_de_ai">[其它] 我想得到你的爱</option>
+	<option value="yun_dong_yuan_jin_xing_qu">[经典] 运动员进行曲</option>
+	</select>
+	<input type="button" class="all_an_1" id="xlbfxz_bf" value="试听" onclick="testplaymovie('flash_tixing');" />
+	<input type="button" class="all_an_0" id="xlbfxz_tz" value="停止" onclick="tingzhi();" disabled="disabled" />
+	</td>
+  </tr>
+  <!-- ************************************************************ -->
+  <tr>
+    <td>响铃时长：</td>
+    <td>
+	<select id="xlscxz" onchange="HL.Cookie.Set('naobiao_xlscxz',this.value,604800,'/');" class="all_xl_1" style="margin-right: 5px;">
+	<option value="0">一直</option>
+	<option value="10">10秒</option>
+	<option value="30">30秒</option>
+	<option value="60">1分钟</option>
+	<option value="300">5分钟</option>
+	<option value="600">10分钟</option>
+	</select>
+	</td>
+  </tr>
+  <!-- ************************************************************ -->
+</table>
+</div>
+<div id="apDiv_g_g_200x200"><div id="ggwz___2"><a href="http://www.51240.org/" target="_blank"><img src="style/ggwz___2.png" width="200" height="200" border="0" /></a></div></div>
+<div id="apDiv_fenxiang"><div id="ggwz___3" style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;"><script type="text/javascript" src="https://api.lwl12.com/hitokoto/main/get?encode=js&charset=utf-8"></script><div id="lwlhitokoto"><script>lwlhitokoto()</script></div></div></div>
+</div>
+</div>
+<!-- ************************** 底部提示单元 ********************************** -->
+<div id="xia_tishi"><div class="apDiv"><div id="xia_tishi_apDiv">
+<!-- 如果时间到了，那就显示出关闭按钮 -->
+<div id="xia_tishi_guanbi_apDiv"><a href="javascript:tingzhi();"><img src="style/touming.gif" width="120" height="140" border="0" /></a></div>
+</div></div></div>
+<!-- ************************** 底部提示单元 ********************************** -->
+<script type="text/javascript">
+document.body.style.backgroundColor = '#000000';
+init();
+</script>
+<div id="banquan">
+  <div id="banquan_zuo"><h1>闹钟网（在线网页闹钟），温馨提示：</h1><br />1、在您设置好响铃后，您可以最小化本窗口以进行其它工作。<br />2、断掉网络后，本闹钟还能继续为您闹铃，您无需一直保持在线状态。<br />3、闹铃音量的大小将取决与您的耳机、音箱所设置的音量大小。<br />4、本闹钟兼容IE、FireFox、Chrome、Opera、Safari等主流浏览器。</div>
+  <div id="banquan_you"><br />友情链接：<a href="http://www.51240.org/" target="_blank">购物优惠券</a> <a href="http://bbs.yuanmawu.net/" target="_blank">源码论坛</a> <a href="https://huorebo.com/" target="_blank">高清电影</a><br />CopyRight &copy; 2002-2018 <a href="/">闹钟网</a> All Rights Reserved<br /><a href="https://shang.qq.com/wpa/qunwpa?idkey=68e83deee5b93cf84ed93db1bbf87fc2c991d5e045eb7601c09f9d518f3a5b71" target="_blank" rel="nofollow">意见建议</a> <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备02000067号</a></div>
+</div>
+</body>
+</html>
