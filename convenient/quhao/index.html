@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>全国区号查询</title>
+<script type="text/javascript" src="qh.js"></script>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+<style type="text/css">
+<!--
+#tab_yb {
+	background-color: #CCC;
+}
+
+#tab_yb th {
+	background-color: #EBEBEB;
+	padding-top: 5px;
+	padding-right: 17px;
+	padding-bottom: 5px;
+	padding-left: 17px;
+}
+#tbody_yb td {
+	text-align: center;
+	padding-top: 5px;
+	padding-right: 17px;
+	padding-bottom: 5px;
+	padding-left: 17px;
+	background-color: #FFF;
+}
+body{
+	text-align: center;
+}
+-->
+</style>
+</head>
+<body>
+<div>
+  <h1>全国区号查询</h1>
+</div>
+<div class="result">
+  <select id="sel_sf" onchange="sfChange()">
+  </select>
+  <select id="sel_cs" onchange="csChange();">
+    <option value="">所有</option>
+  </select>
+  <input type="text" id="keyword_yb" />
+  <input type="button" value="搜索" onclick="cha_yb()"/>
+  <br />
+  (可输入省份、城市、区号、邮编进行搜索)
+  <table border="0" align="center" cellpadding="0" cellspacing="1" id="tab_yb">
+    <thead>
+      <tr>
+        <th>省份</th>
+        <th>市县</th>
+        <th>邮编</th>
+        <th>区号</th>
+      </tr>
+    </thead>
+    <tbody id="tbody_yb">
+    </tbody>
+  </table>
+</div>
+<div class="foot">Powered by <a href="http://www.updayday.com" target="_blank">深圳生活网</a><!--请尽量保留版权信息--></div>
+<script language="javascript">
+
+function csChange()
+{
+    var sf=$("#sel_sf").val();
+    var cs=$("#sel_cs").val();
+    var htmls="";
+    for(var i=0;i<sfArr.length;i++)
+    {
+        //筛选省份
+        if(sf!="")
+        {
+            if(sfArr[i]!=sf)
+            {
+                continue;
+            }
+        }
+        //筛选市县
+        for(var j=0;j<csArr[i].length;j++)
+        {
+            if(cs!="")
+            {
+                if(csArr[i][j][0]!=cs)
+                {
+                    continue;
+                }
+            }
+            //这里表示可以的
+            htmls=htmls+"<tr><td>"+sfArr[i]+"</td><td>"+csArr[i][j][0]+"</td><td>"+csArr[i][j][1]+"</td><td>"+csArr[i][j][2]+"</td></tr>";
+        }
+    }
+    
+    $("#tbody_yb").html(htmls);
+}
+
+function sfChange()
+{
+    var sf=$("#sel_sf").val();
+    if(sf=="")
+    {
+        alert("请选择省份");
+        return;
+    }
+    var htmls="";
+    for(var i=0;i<sfArr.length;i++)
+    {
+        if(sf!="")
+        {
+            if(sfArr[i]!=sf)
+            {
+                continue;
+            }
+        }
+        htmls=htmls+"<option value=''>所有</option>";
+        for(var j=0;j<csArr[i].length;j++)
+        {
+            //这里表示可以的
+            htmls=htmls+"<option value='"+csArr[i][j][0]+"'>"+csArr[i][j][0]+"</option>";
+        }
+        break;
+    }
+    $("#sel_cs").html(htmls);    
+    csChange();
+}
+
+function init()
+{
+    var htmls="";
+    for(var i=0;i<sfArr.length;i++)
+    {
+         htmls=htmls+"<option value='"+sfArr[i]+"'>"+sfArr[i]+"</option>";
+    }
+    $("#sel_sf").html(htmls);    
+    sfChange();
+}
+$(document).ready(function(){ init();});
+
+function cha_yb()
+{
+    var keyword_yb=$("#keyword_yb").val();
+    if(keyword_yb=="")
+    {
+        alert("请输入关键字,可以是省份/市县名称或者邮编、区号");
+        return;
+    }
+    var htmls="";
+    var isSFOK=false;
+    for(var i=0;i<sfArr.length;i++)
+    {
+        isSFOK=false;
+        //省份是否合适
+        if(sfArr[i].indexOf(keyword_yb)!=-1)
+        {
+            isSFOK=true;
+        }
+        for(var j=0;j<csArr[i].length;j++)
+        {
+            if(csArr[i][j][0].indexOf(keyword_yb)!=-1 || csArr[i][j][1].indexOf(keyword_yb)!=-1 || csArr[i][j][2].indexOf(keyword_yb)!=-1 || isSFOK)
+            {
+                htmls=htmls+"<tr><td>"+sfArr[i]+"</td><td>"+csArr[i][j][0]+"</td><td>"+csArr[i][j][1]+"</td><td>"+csArr[i][j][2]+"</td></tr>";
+            }
+        }
+    }
+    $("#tbody_yb").html(htmls);
+}
+</script>
+</body>
+</html>
