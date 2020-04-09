@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="NUFWRGlSeUlZJD59WSIdKkMbFQ8/FwEWGBYdKCcmPAhGNiMnAAYycA==">
+	<title>身份证号码查询_身份证号大全_身份证号码大全-异梦云</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/weather.css">
+	<meta name="keywords" content="身份证号码查询,身份证号大全,身份证号码大全">
+<meta name="description" content="身份证号查询频道为您提供各地身份证号大全,身份证号码大全，如果是合法身份证号可以查询出该身份证号的归属地">
+<link href="css/shenfenzheng.css" rel="stylesheet">
+<script src="js/jquery.js"></script></head>
+<body>
+<p><span id="weather">异梦云时间-</span>&nbsp;&nbsp; <img src="images/ico_date.png"> <span id="pDate">-</span> <b id="pTime">-</b></p>
+	<!--main_-->
+<div class="content pailuan clearfix">
+  <div class="left">
+    <div class="box02">
+      <div class="hd"><h1 class="h1List"><img src="images/shenfenzheng.png">身份证号大全</h1></div>
+      <div class="bd">
+      <div class="sf-sear">
+        <form onsubmit="return false;" name="query_form">
+          <div class="clearfix">
+            <div class="fl">
+              <div>
+                <input class="int" type="text" placeholder="请输入身份证号查询" name="userid" id="userid">
+              </div>
+            </div>
+            <div class="fr">
+              <div><input class="btn" type="submit" value="查询" onclick="this.value = '查询中..';searchCard();"></div>
+            </div>
+          </div>
+        </form>
+        <p>本身份证号大全支持15位身份证号码查询或18位身份证号码查询</p>
+      </div>
+      </div>
+    </div>
+    <div id="before">
+    <div class="blank"></div>
+    <div class="box01">
+      <div class="hd">
+        <h3>身份证号大全</h3>
+      </div>
+      <div class="bd">
+        <div class="sf-con">
+          <p>为您提供身份证号大全，身份证号码大全及姓名、身份证、身份证号码和真实姓名，身份证号码查询，身份证号码大全，身份证号码，身份证大全，身份证查询系统，身份证号码和姓名，居民身份证号码，身份证丢了怎么办，身份证查询，身份证号，居民身份证。</p>
+          <p>居民身份证号码按照《公民身份证号码》国家标准编制，身份证号码由18位数字组成:前6位为行政区划分代码，第7位至14位为出生日期码，第15位至17位为顺序码，第18位为校验码。老居民身份证号码为15位数字。2000年后，原来7、8位的年份数字改为全称，并在最后一位增加校验码。身份证号码一经编定不作改变，派出所会在户口资料中给你加上，你要换新身份证时就是18位身份证号码了。</p>
+        </div>
+      </div>
+    </div>
+    <div class="box01">
+      <div class="hd">
+        <h3>相关阅读</h3>
+      </div>
+      <div class="bd">
+        <ul class="clearfix tlist01">
+			<li><a href="http://www.xxx.com/" title="免费空间">免费空间</a></li><li><a href="http://www.xxx.com" title="免费领名片赞">免费领名片赞</a></li><li><a href="http://title="低价理论永久超会">低价理论永久超会</a></li>        </ul>
+      </div>
+    </div>
+    <div class="blank"></div>
+    <div class="box01">
+      <div class="hd">
+      </div>
+    </div>
+    </div>
+    <div id="after" style="display:none">
+    <div class="blank"></div>
+    <div class="box01">
+      <div class="hd">
+        <h3>身份证号查询结果</h3>
+      </div>
+      <div class="bd">
+        <div class="error" id="error" style="display: none;">身份证信息有误</div>
+        <div class="sf-result" id="info">
+          <p><span>号 码：</span><strong id="code"></strong> <a href="" id="searchCode" target="_blank"></a></p>
+          <p><span>地 区：</span><strong id="diqu"></strong></p>
+          <p><span>生 日：</span><strong id="shengri"></strong></p>
+          <p><span>性 别：</span><strong id="xingbie"></strong></p>
+        </div>
+        <div class="sf-result" id="e_info" style="display:none;">
+          <p><span>你查询的是：</span><strong id="e_e_code"></strong> <font color="#FD5151">(最后一位校验码错误)</font></p>
+          <p><span>正确号码：</span><strong id="e_code"></strong> <a href="" id="e_searchCode"></a></p>
+          <p><span>地区：</span><strong id="e_diqu"></strong></p>
+          <p><span>生日：</span><strong id="e_shengri"></strong></p>
+          <p><span>性别：</span><strong id="e_xingbie"></strong></p>
+        </div>
+        <div class="pt10">
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+     <div id="right_bottom"> 
+    <a rel="nofollow" href="http://xxx.cn" rel="nofollow"target="_blank"><img src="/images/1122.png"  rel="nofollow" width="197" height="223" title="" align="" alt="" /></a> 
+   </div> 
+  <div class="right">
+  <div class="box01">
+    <div class="hd">
+        <h3>站长推荐</h3>
+    </div>
+    <div class="bd"> <ul> <li><div class="aditem"> <br/>
+      <a class="list-group-item list-group-item-danger adli" href="http://www.tianxia.la" target="_blank" style="font-weight:bold;color:#EE0000;font-family:Microsoft JhengHei" title="爱上天下网">爱上天下网</a></div></li> <br/>
+      <li><div class="aditem"> <a class="list-group-item list-group-item-success adli" style="font-weight:bold;color:#0000CD;font-family:Microsoft JhengHei" href="http://www.tianxia.la" target="_blank" title="爱上天下网">爱上天下网</a></div></li><br/>
+      <li><div class="aditem"> <a class="list-group-item list-group-item-danger adli" rel="nofollow" href="http://www.tianxia.la" style="font-weight:bold;color:#8A2BE2;font-family:Microsoft JhengHei" target="_blank" title="爱上天下网">爱上天下网</a></div></li>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+	
+	<!--main_end-->
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+<script type="text/css">
+	.couplet {position: fixed; z-index:9; top:150px;overflow: visible;width:100px;}
+	.couplet.left { left: 15px;}
+	.couplet.right { right: 15px;}
+	.couplet .btn {position:absolute;top:100%;left:0; width:100px;height:20px;line-height:20px;text-align: center;font-size:12px; cursor:pointer;color:#fff;background:#999999;padding: 0;margin: 0;border: none;border-radius: 0;}
+	.couplet .btn:hover { background-color:#a9a9a9}
+</style><div class="couplet right">
+<style type="text/css">
+.zone5{position: fixed; z-index:9; right: 15px; bottom: 15px;overflow: visible;width:250px;}
+.zone5 .btn {position:absolute;top:-22px;right:0; width:40px;height:20px;line-height:20px;text-align: center;font-size:12px; cursor:pointer;color:#fff;background:#999999;padding: 0;margin: 0;border: none;border-radius: 0;}
+.zone5 .btn:hover { background-color:#a9a9a9}
+</style>		<script type="text/javascript">
+    /*黎九 创建于 2018/3/10*/
+    var cpro_id = "u2990880";
+</script>
+<script src="js/shenfenzheng.js"></script>
+<script src="js/yii.js"></script>
+ <body>
+<html>

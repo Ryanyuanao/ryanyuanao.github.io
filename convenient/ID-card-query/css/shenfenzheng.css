@@ -1,0 +1,43 @@
+@charset "utf-8";
+.sf-sear { padding:0 60px}
+.sf-sear p { padding:20px 0;text-align:left; color:#999}
+.sf-sear form input {vertical-align:middle;outline:none}
+.sf-sear form .int{ padding-left:5px; width:100%; height:58px; line-height:58px;font-size:20px;border:solid 1px #ddd}
+.sf-sear form .int:-ms-input-placeholder{font-size:14px}
+.sf-sear form .int::-moz-placeholder{font-size:14px}
+.sf-sear form .int::-webkit-input-placeholder{font-size:14px}
+.sf-sear form .btn{width:120px;height:60px;_height:58px;font-size:20px;cursor:pointer;color:#fff;border:none;background:#3ae078}
+.sf-sear form .fr{position:relative;margin-left:-120px;*margin-top:1px;width:120px}
+.sf-sear form .fl{width:100%}
+.sf-sear form .fl div{margin-right:120px}
+
+.sf-con{ padding:0 20px 20px}
+.sf-con p { padding-top:10px; text-align:left; color:#666}
+
+.sf-result{ padding:12px}
+.sf-result p { padding-top:12px; text-align:left; overflow:hidden;}
+.sf-result p span { float:left; width:96px; text-align:right;}
+.sf-result p strong { font-weight:bold; color:#1179ca}
+
+.error { padding-top:10px; text-align:center;color:red;}
+
+@media screen and (max-width:719px){
+	.sf-sear { padding:0 20px}
+	.sf-con{ padding:0 10px 10px}
+}
+@media screen and (max-width:479px){
+	.sf-result li { float:none; width:100%}
+	.sf-sear form .btn{height:50px;font-size:18px;}
+	.sf-sear form .int{height:48px;line-height:48px;font-size:16px}
+	.sf-result p font { margin-left:96px; display:block; font-size:87.5%}
+}
+@media screen and (max-width:359px){
+	.sf-sear { padding:0 10px}
+	.sf-sear form .btn{width:90px;height:40px;font-size:16px;}
+	.sf-sear form .int{height:38px;line-height:38px;}
+	.sf-sear form .fr{margin-left:-90px;width:90px}
+	.sf-sear form .fl div{margin-right:90px}
+	.sf-result p span { display:block; width:100%; text-align:left;}
+	.sf-result p strong { display:block;}
+	.sf-result p font { margin-left:0}
+}
