@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>È«¹úÇøºÅ²éÑ¯</title>
+<title>å…¨å›½åŒºå·æŸ¥è¯¢</title>
 <script type="text/javascript" src="qh.js"></script>
 <script type="text/javascript" src="jquery-1.6.4.min.js"></script>
 <style type="text/css">
@@ -34,32 +34,31 @@ body{
 </head>
 <body>
 <div>
-  <h1>È«¹úÇøºÅ²éÑ¯</h1>
+  <h1>å…¨å›½åŒºå·æŸ¥è¯¢</h1>
 </div>
 <div class="result">
   <select id="sel_sf" onchange="sfChange()">
   </select>
   <select id="sel_cs" onchange="csChange();">
-    <option value="">ËùÓĞ</option>
+    <option value="">æ‰€æœ‰</option>
   </select>
   <input type="text" id="keyword_yb" />
-  <input type="button" value="ËÑË÷" onclick="cha_yb()"/>
+  <input type="button" value="æœç´¢" onclick="cha_yb()"/>
   <br />
-  (¿ÉÊäÈëÊ¡·İ¡¢³ÇÊĞ¡¢ÇøºÅ¡¢ÓÊ±à½øĞĞËÑË÷)
+  (å¯è¾“å…¥çœä»½ã€åŸå¸‚ã€åŒºå·ã€é‚®ç¼–è¿›è¡Œæœç´¢)
   <table border="0" align="center" cellpadding="0" cellspacing="1" id="tab_yb">
     <thead>
       <tr>
-        <th>Ê¡·İ</th>
-        <th>ÊĞÏØ</th>
-        <th>ÓÊ±à</th>
-        <th>ÇøºÅ</th>
+        <th>çœä»½</th>
+        <th>å¸‚å¿</th>
+        <th>é‚®ç¼–</th>
+        <th>åŒºå·</th>
       </tr>
     </thead>
     <tbody id="tbody_yb">
     </tbody>
   </table>
 </div>
-<div class="foot">Powered by <a href="http://www.updayday.com" target="_blank">ÉîÛÚÉú»îÍø</a><!--Çë¾¡Á¿±£Áô°æÈ¨ĞÅÏ¢--></div>
 <script language="javascript">
 
 function csChange()
@@ -69,7 +68,7 @@ function csChange()
     var htmls="";
     for(var i=0;i<sfArr.length;i++)
     {
-        //É¸Ñ¡Ê¡·İ
+        //ç­›é€‰çœä»½
         if(sf!="")
         {
             if(sfArr[i]!=sf)
@@ -77,7 +76,7 @@ function csChange()
                 continue;
             }
         }
-        //É¸Ñ¡ÊĞÏØ
+        //ç­›é€‰å¸‚å¿
         for(var j=0;j<csArr[i].length;j++)
         {
             if(cs!="")
@@ -87,7 +86,7 @@ function csChange()
                     continue;
                 }
             }
-            //ÕâÀï±íÊ¾¿ÉÒÔµÄ
+            //è¿™é‡Œè¡¨ç¤ºå¯ä»¥çš„
             htmls=htmls+"<tr><td>"+sfArr[i]+"</td><td>"+csArr[i][j][0]+"</td><td>"+csArr[i][j][1]+"</td><td>"+csArr[i][j][2]+"</td></tr>";
         }
     }
@@ -100,7 +99,7 @@ function sfChange()
     var sf=$("#sel_sf").val();
     if(sf=="")
     {
-        alert("ÇëÑ¡ÔñÊ¡·İ");
+        alert("è¯·é€‰æ‹©çœä»½");
         return;
     }
     var htmls="";
@@ -113,10 +112,10 @@ function sfChange()
                 continue;
             }
         }
-        htmls=htmls+"<option value=''>ËùÓĞ</option>";
+        htmls=htmls+"<option value=''>æ‰€æœ‰</option>";
         for(var j=0;j<csArr[i].length;j++)
         {
-            //ÕâÀï±íÊ¾¿ÉÒÔµÄ
+            //è¿™é‡Œè¡¨ç¤ºå¯ä»¥çš„
             htmls=htmls+"<option value='"+csArr[i][j][0]+"'>"+csArr[i][j][0]+"</option>";
         }
         break;
@@ -142,7 +141,7 @@ function cha_yb()
     var keyword_yb=$("#keyword_yb").val();
     if(keyword_yb=="")
     {
-        alert("ÇëÊäÈë¹Ø¼ü×Ö,¿ÉÒÔÊÇÊ¡·İ/ÊĞÏØÃû³Æ»òÕßÓÊ±à¡¢ÇøºÅ");
+        alert("è¯·è¾“å…¥å…³é”®å­—,å¯ä»¥æ˜¯çœä»½/å¸‚å¿åç§°æˆ–è€…é‚®ç¼–ã€åŒºå·");
         return;
     }
     var htmls="";
@@ -150,7 +149,7 @@ function cha_yb()
     for(var i=0;i<sfArr.length;i++)
     {
         isSFOK=false;
-        //Ê¡·İÊÇ·ñºÏÊÊ
+        //çœä»½æ˜¯å¦åˆé€‚
         if(sfArr[i].indexOf(keyword_yb)!=-1)
         {
             isSFOK=true;
