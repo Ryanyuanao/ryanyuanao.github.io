@@ -1,5 +1,19 @@
 ### 瑞安编程站
- **更新自2020.4.9** 
+ **更新自2020.4.12** 
+
+ _已在多平台同步更新，链接如下：_ 
+
+ **github（主仓库）：** https://github.com/Ryanyuanao/ryanyuanao.github.io
+
+ **预览地址：** https://ryanyuanao.xyz/
+
+ **码云（gitee）：** https://gitee.com/Ryanyuanao/ryanyuanao.github.io
+
+ **预览地址：** https://ryanyuanao.gitee.io/ryanyuanao.github.io/
+
+ **coding：** https://ryanyuanao.coding.net/p/ryanyuanao.github.io/git
+
+ **预览地址：** https://n.dowy.cn/
 
  _任务清单表：_
 |项目|预计日期|负责人|进度|
@@ -21,3 +35,5 @@
 |为网站开发电脑版客户端|1小时|Ryan袁奥|×|
 |为网站开发手机APP|10分钟|Ryan袁奥|×|
 |······|-|-|-|
+
+**如果您能帮我们把以上的×变为√的话，请联系邮箱：yuanao10@qq.com！** 
