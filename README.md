@@ -5,15 +5,19 @@
 
  **github（主仓库）：** https://github.com/Ryanyuanao/ryanyuanao.github.io
 
- **预览地址：** https://ryanyuanao.xyz/
+ **预览地址：** https://ryanyuanao.xyz
 
  **码云（gitee）：** https://gitee.com/Ryanyuanao/ryanyuanao.github.io
 
- **预览地址：** https://ryanyuanao.gitee.io/ryanyuanao.github.io/
+ **预览地址：** https://ryanyuanao.gitee.io/ryanyuanao.github.io
 
  **coding：** https://ryanyuanao.coding.net/p/ryanyuanao.github.io/git
 
- **预览地址：** https://n.dowy.cn/
+ **预览地址：** https://n.dowy.cn
+
+ **gitlab：** https://gitlab.com/Ryanyuanao/ryanyuanao.gitlab.io
+
+ **预览地址：** http://z.ryanyuanao.xyz/
 
  _任务清单表：_
 |项目|预计日期|负责人|进度|
