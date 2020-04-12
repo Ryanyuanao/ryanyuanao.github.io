@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>全民K歌获取用户歌曲,全民K歌api,全民K歌外链</title>
+  <script src="https://www.xcsos.cn//diy/qmkg/jquery.min.js"></script> 
+  <script src="https://www.xcsos.cn//diy/qmkg/jsUrlHelper.js"></script>
+  <script type="text/javascript" src="https://js.users.51.la/19319582.js"></script>
+  <script>
+	var num=0;
+	function MusicJsonCallback (data) {
+		for(i=0;i<data.data.ugclist.length; i++){
+			var url ="https://node.kg.qq.com/cgi/fcgi-bin/fcg_get_play_url?shareid=" + data.data.ugclist[i].shareid;
+			var p = document.createElement('p');//创建p节点
+			p.innerHTML = (num+1)+": "+data.data.ugclist[i].title;//p节点显示的文字
+			var audio = document.createElement('audio'); //生成一个audio元素 
+			audio.controls = true; //这样控件才能显示出来 
+			audio.src = url; //音乐的路径 
+			audio.preload = "none";
+			document.body.appendChild(p); //把p添加到页面中
+			document.body.appendChild(audio); //小虫博客
+			
+			num++;
+		}
+    }
+					
+	var more_flag=1;
+	var index=1;
+	var fun = function() {
+		if (more_flag==1) {
+			var src = "https://node.kg.qq.com/cgi/fcgi-bin/kg_ugc_get_homepage?type=get_uinfo&start="+index+"&num=8&share_uid="+userId;
+			$.ajax({
+						type: "GET",
+						url: src,
+						dataType: "jsonp",  //指定服务器返回的数据类型
+                        jsonpCallback: "MusicJsonCallback",  //指定回调函数名称
+						beforeSend: function(request) {
+							request.setRequestHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36");
+						}
+					}).done(function(data) {
+						more_flag=data.data.has_more;
+						index++;
+						fun();
+					}).fail(function() {
+						console.log("error");
+					})
+		} else {
+			console.log(num);
+		}
+	}
+	
+	var userId;
+	var myfunction = function(){
+		urlUid=document.getElementById("homePage").value;
+		userId=jsUrlHelper.getUrlParam(urlUid,"uid");
+		fun();
+	}
+	
+	document.onkeydown = function (e) {
+		var theEvent = window.event || e;
+		var code = theEvent.keyCode || theEvent.which;
+		if (code == 13) {
+			$("#btn").click();
+		}
+	}
+</script>
+<style type="text/css">
+audio{
+    width: 380px;
+    height: 48px;
+}
+body{ text-align:center}
+#divcss5{margin:0 auto;border:2px solid #000;width:300px;height:100px}
+#n{margin:10px auto; width:920px; border:1px solid #CCC;font-size:12px; line-height:30px;}
+#n a{ padding:0 4px; color:#333}
+</style>
+ </head> 
+ <body background="https://www.xcsos.cn/wp-content/uploads/2019/01/bg.png">
+ <div class="yonghu">
+ <p>
+	简介：可直接下载用户全部公开歌曲，右键复制音频链接永久外链。<br>请粘贴用户主页地址获取所有公开歌曲 <br>例：https://kg.qq.com/node/personal?uid=619f9a87252d358c
+ 
+ 
+</p>
+  <input type="text" id="homePage" placeholder="请粘贴用户主页地址" autofocus="autofocus" /> 
+  <input type="button" id="btn" value="确定" onclick="myfunction()" />
+  </div>
+ </body>
+</html>
