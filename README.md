@@ -17,7 +17,7 @@
 
  **gitlab：** https://gitlab.com/Ryanyuanao/ryanyuanao.gitlab.io
 
- **预览地址：** http://z.ryanyuanao.xyz/
+ **预览地址：** http://z.ryanyuanao.xyz
 
  _任务清单表：_
 |项目|预计日期|负责人|进度|
