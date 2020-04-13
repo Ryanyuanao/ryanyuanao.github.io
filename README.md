@@ -21,7 +21,9 @@
 
  **阿里云Code托管平台：** http://code.aliyun.com/ryanyuanao/ryanyuanao.github.io
 
- **预览地址：** 无
+ **bitbucket：** https://bitbucket.org/ryanyuanao/ryanyuanao.bitbucket.io
+
+ **预览地址：** https://ryanyuanao.bitbucket.io
 
   _任务清单表：_
 |项目|预计日期|负责人|进度|
