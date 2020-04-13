@@ -19,7 +19,11 @@
 
  **预览地址：** http://z.ryanyuanao.xyz
 
- _任务清单表：_
+ **阿里云Code托管平台：** http://code.aliyun.com/ryanyuanao/ryanyuanao.github.io
+
+ **预览地址：** 无
+
+  _任务清单表：_
 |项目|预计日期|负责人|进度|
 | --- | --- | --- | --- |
 |游戏大全主页完善|30分钟|Ryan袁奥|√|
